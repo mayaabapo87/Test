@@ -2,14 +2,9 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-    <FetchForm></FetchForm>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
-
-<script>
-import FetchForm from '@/components/FetchForm.vue'
-</script>
 
 <style>
 #app {
