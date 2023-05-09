@@ -1,8 +1,8 @@
 {
-  "name": "server",
+  "name": "api",
   "version": "1.0.0",
   "description": "server side for property pass control",
-  "main": "server.js",
+  "main": "api.js",
   "scripts": {
     "start": "nodemon server.js --port 3080"
   },
@@ -10,13 +10,5 @@
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.22"
-  },
-  "dependencies": {
-    "axios": "^1.4.0",
-    "cors": "^2.8.5",
-    "mongoose": "^7.1.1",
-    "multer": "^1.4.4",
-    "nginx": "^1.0.8",
-    "node-cache": "^5.1.2"
   }
 }

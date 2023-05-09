@@ -1,41 +1,35 @@
-const cors = require('cors');
+//Importing express module
 const express = require('express');
 const mongoose = require('mongoose');
-
-const passRouter = require("./routes/passRoutes");
-const fileRouter = require("./routes/fileRoutes");
+const Router = require("./routes")
 
 mongoose.set("strictQuery", false);
-
+ 
 const app = express();
-app.use(cors());
 app.use(express.json());
 
 const PORT = 3080;
 
-const user = "zen";
-const pass = "RRqQveYMsiMRzgIR";
-const cluster = "cluster";
-const name = "main";
+const user = "zen"
+const pass = "RRqQveYMsiMRzgIR"
+const cluster = "eeppc"
+const name = "test"
 
-// Connection to the MongoDB database
+//Connection to the mongodb database
 mongoose.connect(
-  `mongodb+srv://${user}:${pass}@${cluster}.mdgajbf.mongodb.net/${name}?retryWrites=true&w=majority`,
-  {
+    `mongodb+srv://${user}:${pass}@${cluster}.xm9nfsr.mongodb.net/${name}?retryWrites=true&w=majority`, 
+    {
     useNewUrlParser: true,
-    useUnifiedTopology: false
-  }
-);
+    useUnifiedTopology: true
+    });
 
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "Connection error: "));
+db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
-  console.log("Connected successfully");
+    console.log("Connected successfully");
 });
 
-// Routes
-app.use('/passes', passRouter);
-app.use('/', fileRouter);
+app.use(Router);
 
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
