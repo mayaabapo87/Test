@@ -44,5 +44,3 @@ const fieldNames = {
     xuor: 'XU Official Receipt',
     xushs: 'XU Senior High School',
 }
-
-module.exports = fieldNames;
