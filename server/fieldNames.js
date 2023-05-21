@@ -2,7 +2,7 @@ const fieldNames = {
     amt: 'Amount',
     appr: 'Approver',
     ass: 'Assessment from CISO or PPO',
-    atfr: 'Accomplished Transfer Form with MR',
+    atfmr: 'Accomplished Transfer Form with MR',
     borr: 'Borrowed Items / Equipment',
     company: 'Company',
     done: 'Status',

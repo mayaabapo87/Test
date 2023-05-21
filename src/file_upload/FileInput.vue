@@ -2,11 +2,11 @@
   <div>
     <label>{{ label }}</label>
     <div>
-      <input type="file" multiple @change="handleFileInput" />
+      <input type="file" style="margin: 0 auto" multiple @change="handleFileInput" />
       <ul>
         <li v-for="(file, index) in selectedFiles" :key="file.name">
           {{ file.name }}
-          <button @click="removeFile(index)">Remove</button>
+          <q-btn color="button" style="border-radius: 8px;" label="Remove" @click="removeFile(index)"/>
         </li>
       </ul>
     </div>

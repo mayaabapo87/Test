@@ -8,7 +8,7 @@
   </template>
   
   <script>
-  import UploadOverlay from '../file_upload/FileInput.vue';
+  import UploadOverlay from '../file_upload/FormInput.vue';
   
   export default {
     name: 'UploadButton',

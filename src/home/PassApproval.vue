@@ -1,4 +1,4 @@
-User
+
 <template>
   <div class="q-pa-md">
     <q-card class="box" flat bordered v-for="pass in passes" :key="pass._id">
@@ -67,7 +67,7 @@ User
           </div>
         </q-tab-panel>
 
-        <q-tab-panel style="padding: 20px 0 0 0" name="c">
+        <q-tab-panel style="padding: 20px 0 0 0; text-align: center" name="c">
             <span id="item" v-html="pass.unapprovedItems.join('<br>')">
             </span>
         </q-tab-panel>
@@ -294,6 +294,7 @@ export default {
   text-transform: uppercase
 
 #item
+  margin-bottom: 5px
   color: #7a1d26
   text-align: center
   font-size: 15px

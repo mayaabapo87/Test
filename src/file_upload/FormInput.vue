@@ -8,9 +8,9 @@
           <file-input label="Attach files" :passId="passId" :onChange="handleFileChange" />
           <p class="form-note">Accepted file types: PDF, Excel, JPG, PNG, Word</p>
         </div>
-        <div class="form-field" style="display: flex; justify-content: space-evenly; margin-bottom: 5px;">
-          <submit-button label="Submit" />
-          <button @click="closeOverlay">Close</button>
+        <div class="form-field" style="display: flex; justify-content: space-around; margin-bottom: 5px;">
+          <submit-button/>
+          <q-btn color="button" style="border-radius: 8px;" @click="closeOverlay" label="Close"/>
         </div>
       </form>
     </div>
@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import FileInput from "@/file_upload/FileInput.vue";
-import SubmitButton from "@/file_upload/SubmitButton.vue";
+import FileInput from "./FileInput.vue";
+import SubmitButton from "./SubmitButton.vue";
 
 export default {
   name: 'FormInput',
@@ -51,6 +51,7 @@ export default {
 </script>
 
 <style>
+
 /* Styles for the form container and header */
 .form-container {
   text-align: center;
@@ -62,7 +63,11 @@ export default {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 .form-title {
-  font-size: 28px;
+  font-family: var(--header);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 26px;
+  font-size: 26px;
   font-weight: bold;
   color: #333;
   margin-top: 0;
@@ -75,7 +80,7 @@ export default {
 }
 
 .form-label {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
