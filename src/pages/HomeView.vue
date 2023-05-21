@@ -20,6 +20,7 @@ export default {
 
 <style scoped>
 .dash{
+  min-height: 100vh;
   width: auto;
   padding: 40px 100px 100px 100px;
   border-left: var(--borGrey);

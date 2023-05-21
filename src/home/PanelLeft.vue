@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .left{
   padding: 40px 20px;
-  width: 250px;
+  width: 275px;
   background-color: #fff;
   border-left: var(--borGrey);
 }

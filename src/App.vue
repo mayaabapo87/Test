@@ -32,7 +32,7 @@ html, body{
   font-size: 16px;
   height: 100%;
   margin: 0;
-  background-color: #eff0f1;
+  background-color: #283971;
   color: var(--tColor2);
 }
 
