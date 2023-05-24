@@ -70,7 +70,7 @@ const dbSchema = mongoose.Schema({
     }
   },
 
-  gtappr: [{
+  appr: [{
     title: {
       type: String,
     },
@@ -82,19 +82,6 @@ const dbSchema = mongoose.Schema({
       default: false
     }
   }],
-
-  appr: {
-    title: {
-      type: String,
-    },
-    name: {
-      type: String,
-    },
-    approved: {
-      type: Boolean,
-      default: false
-    }
-  },
 
   rcv: {
     name: {
@@ -162,7 +149,10 @@ dbSchema.pre('validate', function(next) {
       required: true
     };
     this.nature._reqs = 'req2borr';
+  } else if (this.nature.type === 'etc') {
+    this.nature.desc = String
   }
+  
   next();
 });
 

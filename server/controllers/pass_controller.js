@@ -37,8 +37,7 @@ exports.checkPassApproval = async (req, res) => {
 
     const isApproved =
       pass.rcv.signed === true &&
-      pass.appr.approved === true &&
-      pass.gtappr.some((item) => item.approved === true) &&
+      pass.appr.some((item) => item.approved === true) &&
       pass.ver.signed === true &&
       pass.reqs_uploaded === true;
 
@@ -55,10 +54,6 @@ exports.checkPassApproval = async (req, res) => {
         unapprovedItems.push(`Missing document: <strong>${fieldNames[pass.nature._reqs]}</strong>.`);
       }
 
-      if (!pass.appr.approved) {
-        unapprovedItems.push(`Approver <strong>${pass.appr.name} (${pass.appr.title})</strong> has not signed.`);
-      }
-
       if (!pass.ver.signed) {
         unapprovedItems.push(`Verifier <strong>${pass.ver.name} (${pass.ver.title})</strong> has not signed.`);
       }
@@ -67,9 +62,15 @@ exports.checkPassApproval = async (req, res) => {
         unapprovedItems.push(`Receiver <strong>${pass.rcv.name}</strong> has not signed.`);
       }
 
-      const approvedGtapprItems = pass.gtappr.filter((item) => item.approved === true);
-      if (approvedGtapprItems.length === 0) {
-        unapprovedItems.push("<strong>Gate Approval</strong> has not been signed.");
+      const apprItems = pass.appr.filter((item) => item.approved === true);
+      if (apprItems.length === 0) {
+        unapprovedItems.push(`<br>Approver has not signed:`);
+
+        // List all approver names and titles
+        pass.appr.forEach((approver) => {
+          const { name, title } = approver;
+          unapprovedItems.push(`Approver <strong>${name} (${title})</strong>`);
+        });
       }
 
       res.send({ message: "unapproved", unapprovedItems });
