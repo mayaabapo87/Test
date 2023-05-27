@@ -1,5 +1,6 @@
-const PassForm = require("../models/pass_model");
+const PassForm = require("../models/passModel");
 const fieldNames = require("../fieldNames");
+const File = require('../models/fileModel');
 
 // Create a new pass
 exports.createPass = async (req, res) => {
@@ -33,6 +34,12 @@ exports.checkPassApproval = async (req, res) => {
     if (!pass) {
       res.status(404).send({ message: "Pass not found" });
       return;
+    }
+
+    const file = await File.findOne({ pass: passId });
+    if (!file) {
+      pass.reqs_uploaded = false; // Set the 'done' field to true
+      await pass.save(); // Save the updated pass document
     }
 
     const isApproved =
@@ -73,6 +80,8 @@ exports.checkPassApproval = async (req, res) => {
         });
       }
 
+      pass.done = false; // Set the 'done' field to true
+      await pass.save(); // Save the updated pass document
       res.send({ message: "unapproved", unapprovedItems });
     }
   } catch (error) {

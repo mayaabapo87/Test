@@ -2,8 +2,8 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 
-const passRouter = require("./routes/pass_routes");
-const fileRouter = require("./routes/file_routes");
+const passRouter = require("./routes/passRoutes");
+const fileRouter = require("./routes/fileRoutes");
 
 mongoose.set("strictQuery", false);
 

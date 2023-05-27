@@ -1,4 +1,4 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 const dbSchema = mongoose.Schema({
   remarks: {
     type: String,
@@ -149,10 +149,18 @@ dbSchema.pre('validate', function(next) {
       required: true
     };
     this.nature._reqs = 'req2borr';
-  } else if (this.nature.type === 'etc') {
-    this.nature.desc = String
   }
-  
+  next();
+});
+
+dbSchema.pre('save', function (next) {
+  const hasUnsignedAppr = this.appr.some((appr) => !appr.approved);
+  if (hasUnsignedAppr) {
+    this.ver.signed = false;
+    this.rcv.signed = false;
+  } else if (!this.ver.signed) {
+    this.rcv.signed = false;
+  }
   next();
 });
 

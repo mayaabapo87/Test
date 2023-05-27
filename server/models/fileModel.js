@@ -1,3 +1,4 @@
+const PassForm = require('../models/passModel');
 const mongoose = require('mongoose');
 
 const fileSchema = new mongoose.Schema({
@@ -10,7 +11,7 @@ const fileSchema = new mongoose.Schema({
   },
   pass: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Pass',
+    ref: 'PassForm',
   },
 });
 

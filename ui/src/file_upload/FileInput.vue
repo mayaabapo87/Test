@@ -46,12 +46,8 @@ export default {
       const selectedFiles = Array.from(event.target.files);
       const allowedTypes = [
         "application/pdf",
-        "application/vnd.ms-excel",
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         "image/jpeg",
         "image/png",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       ];
       const newFiles = selectedFiles.filter((file) =>
         allowedTypes.includes(file.type)
@@ -72,7 +68,7 @@ export default {
           formData.append('file', file);
         });
         try {
-          const response = await api.post(`/file/upload/${this.passId}`, formData);
+          const response = await api.post(`/upload/${this.passId}`, formData);
           console.log(response.data);
           alert(`Successfully uploaded to pass ${this.passId}!`); // Handle the response from the server
         } catch (error) {
