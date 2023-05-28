@@ -71,4 +71,4 @@ const fieldNames = {
     xushs: 'XU Senior High School',
 }
 
-export default fieldNames;
+module.exports = fieldNames;
