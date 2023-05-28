@@ -122,7 +122,6 @@ export default {
 
   data() {
     return {
-      defs: "a",
       passes: [],
       unapprovedItems: [],
       tabRefs: {},
@@ -183,7 +182,17 @@ export default {
 
   created() {
     try {
-      this.getAllPasses();
+      this.getAllPasses(); // Initial retrieval of passes
+
+      // Retrieve passes every 5 minutes
+      setInterval(() => {
+        try {
+          this.getAllPasses();
+        } catch (error) {
+          console.error(error);
+          alert("Error retrieving passes!");
+        }
+      }, 5 * 60 * 1000); // 5 minutes in milliseconds
     } catch (error) {
       console.error(error);
       alert("Error retrieving passes!");

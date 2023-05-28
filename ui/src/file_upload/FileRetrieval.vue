@@ -2,11 +2,41 @@
   <div class="overlay">  
     <div class="container">
       <h2 class="form-title">View File</h2>
-      <div ref="fileContainer" style="margin: 10px 0; width: 100%;"></div>
+      <div ref="fileContainer" style="margin: 10px 0;"></div>
 
-      <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
-        <q-btn color="green" href="getFileUrl(passId)" style="border-radius: 8px;" label="Download" download/>
-        <q-btn color="button" style="border-radius: 8px;" @click="closeOverlay" label="Close"/>
+      <div class="bContainer">
+        <div style="padding: 0; margin: 0;">
+          <div class="square_btn">
+            <img src="../assets/dl.png" 
+            style="
+                  border: none;
+                  width: 20px;
+                  height: 20px;
+                  filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(173deg) brightness(102%) contrast(101%);" @click="dlFile(passId)" />
+          </div>
+        </div>
+        
+        <div style="padding: 0; margin: 0;">
+          <div class="square_btn">
+            <img src="../assets/delete.png" 
+            style="
+                  border: none;
+                  width: 25px;
+                  height: 25px;
+                  filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(173deg) brightness(102%) contrast(101%);" @click="deleteFile(passId)" />
+          </div>
+        </div>
+        
+        <div style="padding: 0; margin: 0;">
+          <div class="square_btn">
+            <img src="../assets/close.png" 
+            style="
+                  border: none;
+                  width: 18px;
+                  height: 18px;
+                  filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(173deg) brightness(102%) contrast(101%);" @click="closeOverlay" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -27,16 +57,31 @@ export default {
   data() {
     return {
       fileExt: null,
+      fileName: '',
     };
   },
 
   methods: {
+    deleteFile(passId) {
+      return api.delete(`/${passId}`)
+        .then(response => {
+          alert('File successfully deleted!')
+          console.log()
+          return response.data;
+        })
+        .catch(error => {
+          alert('Error deleting file!')
+          console.error(error);
+          throw error;
+        });
+    },
+
     getFileUrl(passId) {
       return api.get(`/${passId}`, { responseType: 'blob' })
         .then(response => {
           const contentType = response.headers['content-type'];
           const fileExtension = this.getFileExt(contentType);
-          this.fileExt = fileExtension
+          this.fileExt = fileExtension;
           
           const fileUrl = URL.createObjectURL(response.data);
           return fileUrl;
@@ -44,6 +89,24 @@ export default {
         .catch(error => {
           console.error('Error retrieving file:', error);
           throw error; // Rethrow the error to propagate it
+        });
+    },
+
+    dlFile(passId) {
+      this.getFileUrl(passId)
+        .then(fileUrl => {
+          const downloadLink = document.createElement('a');
+          downloadLink.href = fileUrl;
+          downloadLink.download = `${passId}.${this.fileExt}`; // Set the desired filename with the appropriate extension
+
+          // Trigger the download
+          downloadLink.click();
+
+          // Clean up the download link
+          URL.revokeObjectURL(fileUrl);
+        })
+        .catch(error => {
+          console.error('Failed to fetch and download file:', error);
         });
     },
 
@@ -65,14 +128,13 @@ export default {
       this.getFileUrl(passId)
         .then(fileUrl => {
           console.log(`${fileUrl}`)
-          const fileExtension = this.fileExt;
 
-          if (fileExtension === 'jpg' || fileExtension === 'png') {
+          if (this.fileExt === 'jpg' || this.fileExt === 'png') {
             this.displayImage(fileUrl);
-          } else if (fileExtension === 'pdf') {
+          } else if (this.fileExt === 'pdf') {
             this.displayPDF(fileUrl);
           } else {
-            console.error('Unsupported file format:', fileExtension);
+            console.error('Unsupported file format:', this.fileExt);
           }
         })
         .catch(error => {
@@ -103,9 +165,9 @@ export default {
           const imageElement = document.createElement('img');
           imageElement.src = base64data;
           imageElement.setAttribute('color-profile', 'sRGB');
-          imageElement.style.minWidth = '600px';
-          imageElement.style.maxWidth = '960px';
-          imageElement.style.height = 'auto';
+          imageElement.style.Width = 'auto';
+          imageElement.style.minHeight = 'auto';
+          imageElement.style.maxHeight = '450px';
           this.$refs.fileContainer.appendChild(imageElement);
         };
         reader.readAsDataURL(xhr.response);
@@ -155,6 +217,14 @@ export default {
 img{
   border: var(--borGrey);
 }
+
+.bContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 150px;
+}
+
 .container {
   align-items: center;
   background-color: white;
@@ -164,9 +234,8 @@ img{
   font-family: Arial, sans-serif;
   height: auto;
   margin: 0 auto;
-  padding: 30px;
+  padding: 20px 12px;
 }
-
 .title {
   font-size: 32px;
   font-weight: bold;

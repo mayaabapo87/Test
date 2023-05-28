@@ -154,13 +154,14 @@ dbSchema.pre('validate', function(next) {
 });
 
 dbSchema.pre('save', function (next) {
-  const hasUnsignedAppr = this.appr.some((appr) => !appr.approved);
+  const hasUnsignedAppr = !this.ver.signed;
   if (hasUnsignedAppr) {
-    this.ver.signed = false;
-    this.rcv.signed = false;
-  } else if (!this.ver.signed) {
+    this.appr.forEach((appr) => {
+      appr.signed = false;
+    });
     this.rcv.signed = false;
   }
+
   next();
 });
 

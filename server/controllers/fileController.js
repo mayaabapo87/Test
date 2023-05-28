@@ -44,6 +44,8 @@ exports.getFile = async (req, res) => {
     // Find files associated with the given pass ID
     const file = await File.findOne({ pass: passId });
     if (!file) {
+      pass.reqs_uploaded = false; // Set the 'done' field to true
+      await pass.save();
       return res.status(404).send('File not found');
     }
     
@@ -55,3 +57,25 @@ exports.getFile = async (req, res) => {
   }
 };
 
+exports.deleteFile = async (req, res) => {
+  const passId = req.params.passId;
+
+  try {
+    const file = await File.findOneAndDelete({ pass: passId });
+    if (!file) {
+      res.status(404).send({ error: "File not found" });
+      return;
+    }
+
+    pass = await PassForm.findOneAndUpdate(
+      { _id: passId },
+      { reqs_uploaded: false },
+      { new: true }
+    );
+
+    res.send({ message: "File deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: "Failed to delete file", message: error.message });
+  }
+};

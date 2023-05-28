@@ -5,12 +5,45 @@
       <form @submit.prevent="submitForm">
         <div class="form-field">
           <label class="form-label">Choose files to attach:</label>
-          <file-input label="Attach files" :passId="passId" :onChange="handleFileChange" />
-          <p class="form-note">Accepted file types: PDF, Excel, JPG, PNG, Word</p>
+
+          <div>
+            <label>{{ label }}</label>
+            <div>
+              <input type="file" style="margin: 0 auto" multiple @change="handleFileInput" />
+              <ul>
+                <li v-for="(file, index) in selectedFiles" :key="file.name">
+                  {{ file.name }}
+                  <q-btn color="button" style="border-radius: 8px;" label="Remove" @click="removeFile(index)"/>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="form-note">Accepted file types: PDF, Excel, JPG, PNG, Word <br> 
+            Upload only a max of 16MB per file (2 max)</p>
         </div>
         <div class="form-field" style="display: flex; justify-content: space-around; margin-bottom: 5px;">
-          <submit-button/>
-          <q-btn color="button" style="border-radius: 8px;" @click="closeOverlay" label="Close"/>
+          <div style="padding: 0; margin: 0;">
+            <div class="square_btn">
+              <img src="../assets/check.png" 
+              style="
+                border: none;
+                width: 22px;
+                height: 22px;
+                filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(173deg) brightness(102%) contrast(101%);" @click="uploadFile(formData)" />
+            </div>
+          </div>
+
+          <div style="padding: 0; margin: 0;">
+            <div class="square_btn">
+              <img src="../assets/close.png" 
+              style="
+                border: none;
+                width: 18px;
+                height: 18px;
+                filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(173deg) brightness(102%) contrast(101%);" @click="closeOverlay" />
+            </div>
+          </div>
         </div>
       </form>
     </div>
@@ -18,31 +51,87 @@
 </template>
 
 <script>
-import FileInput from "./FileInput.vue";
-import SubmitButton from "./SubmitButton.vue";
+import { api } from 'boot/axios-config.js';
 
 export default {
   name: 'FormInput',
-  components: {
-    FileInput,
-    SubmitButton,
+
+  data() {
+    return {
+      selectedFiles: [],
+    };
   },
+
   props: {
     passId: {
       type: String,
       required: true,
     },
+    maxFiles: {
+      type: Number,
+      default: 2,
+    },
   },
+
   methods: {
+    async handleFileInput(event) {
+      const selectedFiles = Array.from(event.target.files);
+      const allowedTypes = [
+        "application/pdf",
+        "image/jpeg",
+        "image/png",
+      ];
+      const newFiles = selectedFiles.filter((file) =>
+        allowedTypes.includes(file.type)
+      );
+      const invalidFiles = selectedFiles.filter(
+        (file) => !allowedTypes.includes(file.type)
+      );
+      const invalidLength =
+        this.selectedFiles.length + newFiles.length > this.maxFiles;
+      if (invalidLength) {
+        alert(`Please upload no more than ${this.maxFiles} files.`);
+      } else if (invalidFiles.length > 0) {
+        alert("Invalid file type.");
+      } else {
+        this.selectedFiles.push(...newFiles);
+        this.formData = new FormData();
+        newFiles.forEach((file) => {
+          this.formData.append('file', file);
+        });
+      }
+    },
+
+    removeFile(index) {
+      this.selectedFiles.splice(index, 1);
+      const files = this.selectedFiles.map((file) => file.name);
+    },
+
+    async uploadFile(formData){
+      try {
+        const response = await api.post(`/upload/${this.passId}`, formData);
+        console.log(response.data);
+
+        const files = this.selectedFiles.map((file) => file.name);
+        alert(`Successfully uploaded to pass ${this.passId}!`); // Handle the response from the server
+        this.closeOverlay();
+      } catch (error) {
+          console.error(error);
+          alert('File upload failed.');
+        }
+    },
+
     handleFileChange(file) {
-      // Do something with the file
+      this.formData = file;
       console.log(file);
     },
+    
     submitForm() {
       // Submit the form data
       console.log('Form submitted');
       this.closeOverlay();
     },
+
     closeOverlay() {
       this.$emit('close-overlay');
     },
