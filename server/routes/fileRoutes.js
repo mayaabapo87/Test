@@ -10,4 +10,6 @@ router.post('/upload/:passId', upload.single('file'), fileController.uploadFile)
 // Retrieve files associated with a specific pass ID
 router.get('/:passId', fileController.getFile);
 
+router.delete('/:passId', fileController.deleteFile);
+
 module.exports = router;
