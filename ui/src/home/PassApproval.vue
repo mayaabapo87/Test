@@ -108,7 +108,7 @@
 <script>
 import { api } from 'boot/axios-config.js';
 
-import fieldNames from '@/../../../server/fieldNames.js'
+import fieldNames from '@/../../../server/fieldNames.js';
 import UploadButton from './UploadButton';
 import ViewButton from './ViewButton';
 
