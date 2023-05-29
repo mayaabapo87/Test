@@ -1,7 +1,7 @@
+require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 
 const passRouter = require("./routes/passRoutes");
 const fileRouter = require("./routes/fileRoutes");
@@ -13,16 +13,12 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = 3080;
-dotenv.config();
 
-const user = process.env.USER;
-const pass = process.env.PASS;
-const cluster = process.env.CLUSTER;
-const name = process.env.NAME;
+const mongoDB = process.env.DB;
 
 // Connection to the MongoDB database
 mongoose.connect(
-  `mongodb+srv://${user}:${pass}@${cluster}.mdgajbf.mongodb.net/${name}?retryWrites=true&w=majority`,
+  mongoDB,
   {
     useNewUrlParser: true,
     useUnifiedTopology: false
