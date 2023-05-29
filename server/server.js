@@ -1,6 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const passRouter = require("./routes/passRoutes");
 const fileRouter = require("./routes/fileRoutes");
@@ -13,10 +14,10 @@ app.use(express.json());
 
 const PORT = 3080;
 
-const user = "zen";
-const pass = "RRqQveYMsiMRzgIR";
-const cluster = "cluster";
-const name = "main";
+const user = process.env.USER;
+const pass = process.env.PASS;
+const cluster = process.env.CLUSTER;
+const name = process.env.NAME;
 
 // Connection to the MongoDB database
 mongoose.connect(

@@ -9,6 +9,7 @@
   "author": "Zenia Gersana <zfgersana@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "dotenv": "^16.0.3",
     "nodemon": "^2.0.22"
   },
   "dependencies": {
