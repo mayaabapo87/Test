@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = 3080;
+dotenv.config();
 
 const user = process.env.USER;
 const pass = process.env.PASS;
