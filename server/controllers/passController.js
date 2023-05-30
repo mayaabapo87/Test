@@ -34,12 +34,12 @@ exports.checkPassApproval = async (req, res) => {
     if (!pass) {
       res.status(404).send({ message: "Pass not found" });
       return;
-    }
-
-    const file = await File.findOne({ pass: passId });
-    if (!file) {
-      pass.reqs_uploaded = false; // Set the 'done' field to true
-      await pass.save(); // Save the updated pass document
+    } else if (!pass.reqs_uploaded){
+      const file = await File.findOne({ pass: passId });
+      if (file) {
+        pass.reqs_uploaded = true; // Set the 'done' field to true
+        await pass.save(); // Save the updated pass document
+      }
     }
 
     const isApproved =

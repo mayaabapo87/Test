@@ -4,12 +4,14 @@
   "description": "server side for property pass control",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js --port 3080"
+    "start": "nodemon server.js --port 3080",
+    "test": "jest"
   },
   "author": "Zenia Gersana <zfgersana@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "dotenv": "^16.0.3",
+    "jest": "^29.5.0",
     "nodemon": "^2.0.22"
   },
   "dependencies": {

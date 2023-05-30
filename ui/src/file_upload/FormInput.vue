@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { api } from 'boot/axios-config.js';
+import { api } from '../boot/axios-config.js';
 
 export default {
   name: 'FormInput',

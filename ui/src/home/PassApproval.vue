@@ -1,4 +1,3 @@
-
 <template>
   <div class="q-pa-md">
     <q-card class="box" flat bordered v-for="pass in passes" :key="pass._id">
@@ -106,7 +105,7 @@
 </template>
 
 <script>
-import { api } from 'boot/axios-config.js';
+import { api } from '../boot/axios-config.js';
 
 import fieldNames from '../../../server/fieldNames.js';
 import UploadButton from './UploadButton';
