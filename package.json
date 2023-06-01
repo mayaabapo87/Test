@@ -6,7 +6,8 @@
     "ui:install": "cd ui && npm install",
     "ui:build": "cd ui && npm run build",
     "server:install": "cd server && npm install",
-    "start": "npm run ui:build && node server/server.js"
+    "build": "npm run ui:build",
+    "start": "npm run build && node server/server.js"
   },
   "dependencies": {},
   "devDependencies": {}
