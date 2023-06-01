@@ -6,7 +6,7 @@
     "ui:install": "cd ui && npm install",
     "ui:build": "cd ui && npm run build",
     "server:install": "cd server && npm install",
-    "build": "npm run ui:build",
+    "build": "quasar ui:build",
     "start": "npm run build && node server/server.js"
   },
   "dependencies": {},
