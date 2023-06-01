@@ -10,7 +10,7 @@
     "format": "prettier --write \"**/*.{js,vue,css,html,md,json}\" --ignore-path .gitignore",
     "test": "jest",
     "dev": "quasar dev",
-    "build": "quasar build"
+    "build": "npm run build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
