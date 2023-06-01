@@ -1,15 +1,5 @@
 services:
   - name: ui
-    buildCommand: cd ui && npm install && npm run build
-    # Additional configuration for the frontend service
-
-  - name: server
-    buildCommand: cd server && npm install && npm start
-    # Additional configuration for the backend service
-
-
-services:
-  - name: ui
     buildCommand: cd ui && npm install && quasar build
     startCommand: cd ui && quasar dev
     # Additional configuration for the frontend service
