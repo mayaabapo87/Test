@@ -1,5 +1,5 @@
 <template>
-    <br>
+    <br id="about-view">
     <br>
     <div class="container-fluid my-5 grey-b1">
         <div class="row my-0 grey-b2">
@@ -29,14 +29,25 @@
   
                 <div id="apollo-carousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active c-item">
-                        <img src="https://picsum.photos/id/7/800/600" class="d-block w-100 c-img" alt="...">
+                        <div class="carousel-item active">
+                            <img src="https://picsum.photos/id/7/800/600" class="d-block w-100 c-img" alt="...">
+
+                            <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+                                <div class="container">
+                                    <h2 class=" work2-f-size">ANY QUESTIONS?</h2>
+                                     <button class="btn btn-maroon btn-lg">INQUIRE</button>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="carousel-item c-item">
-                        <img src="https://picsum.photos/id/8/800/600" class="d-block w-100 c-img" alt="...">
-                        </div>
-                        <div class="carousel-item c-item">
-                        <img src="https://picsum.photos/id/6/800/600" class="d-block w-100 c-img" alt="...">
+                        <div class="carousel-item">
+                            <img src="https://picsum.photos/id/8/800/600" class="d-block w-100 c-img" alt="...">
+
+                            <div class="carousel-caption">
+                                <h2 class="work2-f-size">NEED WORK?</h2>
+                                <button class="btn btn-maroon btn-lg">JOIN US</button>
+                            </div>
+
                         </div>
                     </div>
 
