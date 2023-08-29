@@ -56,7 +56,7 @@
 
     <div class="row my-0 grey-b2">
             <br>
-        </div>
+    </div>
 </div>
 </template>
      
