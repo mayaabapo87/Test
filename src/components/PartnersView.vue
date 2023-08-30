@@ -1,8 +1,8 @@
 <template>
     <br id="partners-view">
     <br>
-     <div class="partner-container my-5">
-        <div class="container border text-center">
+    <div class="container my-5 min-vh-100">
+        <div class="container text-center">
             <div class="row">
                 <h4 class="container text-center py-3 maroon-a2 work2-f-size">
                     OUR PARTNERS
@@ -19,38 +19,41 @@
                         </li>
                     </ul>
                 </div>
+                
             </div>
-            <div class="tab-content border my-2">
-                <div id="our-partners" class="collapse show text-center tab-pane fade">
+            <div class="tab-content my-2 h-100">
+                <div id="our-partners" class="collapse show text-center tab-pane fade active h-100">
                     <Carousel />
+                    <PartnerList />
                 </div>
                 <div id="partner-stories" class="collapse text-center tab-pane fade">
                     <Stories />
+                    <StoriesList />
                 </div>
-            </div>
-            <div class="container">
-                <button type="button" class="btn btn-maroon" >View All</button>
-            </div>
-        </div>
+             </div>
+         </div>
     </div>
 </template>
 
 <script>
 import Carousel from './PartnersCarousel.vue';
 import Stories from './PartnerStories.vue';
+import PartnerList from './PartnersPopup.vue'
+import StoriesList from './StoriesPopup.vue';
 export default {
   components:{
     Carousel,
     Stories,
+    PartnerList,
+    StoriesList,
    }
 }
 </script>
 
 <style>
-    .partner-container {
-        height: 1200px;
-    }
-    
+
+ 
+
     .custom-nav-pills .nav-link, 
     .custom-nav-pills .nav-link:hover .nav-link{
     background-color: #FFFFFF;   
