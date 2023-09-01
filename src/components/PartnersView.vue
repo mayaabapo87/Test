@@ -1,13 +1,7 @@
 <template>
-    <br id="partners-view">
-    <br>
-    <div class="container my-5 min-vh-100">
-        <div class="container text-center">
-            <div class="row">
-                <h4 class="container text-center py-3 maroon-a2 work2-f-size">
-                    OUR PARTNERS
-                </h4>
-            </div>
+    <div class="container-fluid" id="partners-view">
+        <div class="container pt-1">
+            <h1 class="text-center text-maroon fw-bold mt-5 pt-4">OUR PARTNERS</h1>
             <div class="row">
                 <div class="container">
                     <ul class="nav custom-nav-pills justify-content-center" role="tablist">
@@ -19,7 +13,6 @@
                         </li>
                     </ul>
                 </div>
-                
             </div>
             <div class="tab-content my-2 h-100">
                 <div id="our-partners" class="collapse show text-center tab-pane fade active h-100">
@@ -30,9 +23,9 @@
                     <Stories />
                     <StoriesList />
                 </div>
-             </div>
+            </div>
          </div>
-    </div>
+    </div>    
 </template>
 
 <script>
@@ -51,9 +44,6 @@ export default {
 </script>
 
 <style>
-
- 
-
     .custom-nav-pills .nav-link, 
     .custom-nav-pills .nav-link:hover .nav-link{
     background-color: #FFFFFF;   
@@ -75,4 +65,5 @@ export default {
     border: 1px solid;
     border-radius: 10px;
     }
+    
 </style>

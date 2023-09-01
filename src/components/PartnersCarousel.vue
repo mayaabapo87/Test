@@ -2,7 +2,7 @@
     <div id="carouselPartners" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border border-secondary">
                     
-                    <button class="carousel-control-prev bg-dark opacity-25" 
+                    <button class="carousel-control-prev" 
                     type="button" data-bs-target="#carouselPartners" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
@@ -55,7 +55,7 @@
 
                         </div>
                     </div>
-                    <button class="carousel-control-next bg-dark opacity-25" 
+                    <button class="carousel-control-next" 
                     type="button" data-bs-target="#carouselPartners" data-bs-slide="next">
                         <span class="carousel-control-next-icon" ></span>
                         <span class="visually-hidden">Next</span>

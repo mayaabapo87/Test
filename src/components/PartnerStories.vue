@@ -1,11 +1,8 @@
 <template>
     <div id="carouselStories" class="carousel slide" data-ride="carousel">
-        <div class="position-absolute top-0 start-0 translate-middle">
-                            <img src="../assets/idea.png" 
-                                class="rounded-circle bg-maroon" alt="...">
-                        </div>
+ 
         <div class="carousel-inner border border-secondary">
-            <button class="carousel-control-prev bg-dark opacity-25" type="button" 
+            <button class="carousel-control-prev" type="button" 
             data-bs-target="#carouselStories" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -43,7 +40,7 @@
             </div>
         </div>
  
-        <button class="carousel-control-next bg-dark opacity-25" type="button" data-bs-target="#carouselStories" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselStories" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
