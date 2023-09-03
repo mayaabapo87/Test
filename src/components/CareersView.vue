@@ -6,13 +6,13 @@
             data-bs-ride="carousel">
 
                 <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle" type="button" data-bs-target="#carouselCareers" data-bs-slide="prev"
-                style="width: 50px; height: 50px;">
+                style="width: 40px; height: 50px;">
                     <span class="bg-dark rounded carousel-control-prev-icon" aria-hidden="true"
                     style="width: 50px; height: 50px;"></span>
                 </button>   
                     
                 <button class="carousel-control-next position-absolute top-50 start-100 translate-middle" type="button" data-bs-target="#carouselCareers" data-bs-slide="next"
-                style="width: 50px; height: 50px;">
+                style="width: 40px; height: 50px;">
                     <span class="bg-dark rounded carousel-control-next-icon" aria-hidden="true"
                     style="width: 50px; height: 50px;"></span>
                 </button>

@@ -1,69 +1,76 @@
 <template>
-    <div class="container-fluid" id="partners-view">
-        <div class="container pt-1">
-            <h1 class="text-center text-maroon fw-bold mt-5 pt-4">OUR PARTNERS</h1>
-            <div class="row">
-                <div class="container">
-                    <ul class="nav custom-nav-pills justify-content-center" role="tablist">
-                        <li class="nav-item mx-3">
-                            <a class="nav-link active" data-bs-toggle="pill" href="#our-partners">Our Partners</a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a class="nav-link" data-bs-toggle="pill" href="#partner-stories">Partner Stories</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="container-fluid my-5" id="partners-view">
+        <!--Desktop-->
+        <div class="container d-none d-xl-block">
+            <h1 class="text-center text-dark fw-bold mt-5">OUR PARTNERS</h1>
+            <hr class="my-5 border-secondary border-2 border-dark">
+
+            <ul class="nav nav-pills justify-content-center" role="tablist">
+                <li class="nav-item mx-3">
+                    <a class="nav-link text-maroon active border-1 border border-maroon" 
+                    data-bs-toggle="pill" href="#our-partners-desktop">Our Partners</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link text-maroon border-1 border border-maroon" 
+                    data-bs-toggle="pill" href="#partner-stories-desktop">Partner Stories</a>
+                </li>
+            </ul>
+
+            <div class="tab-content my-2 h-100">
+                <div id="our-partners-desktop" class="collapse show text-center tab-pane fade active h-100">
+                    test
+                 </div>
+                <div id="partner-stories-desktop" class="collapse text-center tab-pane fade">
+                    test2
+                  </div>
             </div>
+
+        </div>
+
+        <!--Tablet-->
+        <div class="d-none d-sm-block d-xl-none d-xxl-none">
+
+        </div>
+
+        <!--Mobile-->
+        <div class="d-inline d-block d-sm-none">
+            <h1 class="text-center text-dark fw-bold">OUR PARTNERS</h1>
+            <hr class="my-3 border-secondary border-1">
+            <ul class="nav nav-pills justify-content-center" role="tablist">
+                <li class="nav-item mx-3">
+                    <a class="nav-link text-maroon active border-1 border border-maroon" 
+                    data-bs-toggle="pill" href="#our-partners">Our Partners</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link text-maroon border-1 border border-maroon" 
+                    data-bs-toggle="pill" href="#partner-stories">Partner Stories</a>
+                </li>
+            </ul>
+
             <div class="tab-content my-2 h-100">
                 <div id="our-partners" class="collapse show text-center tab-pane fade active h-100">
-                    <Carousel />
-                    <PartnerList />
-                </div>
+                    test
+                 </div>
                 <div id="partner-stories" class="collapse text-center tab-pane fade">
-                    <Stories />
-                    <StoriesList />
-                </div>
+                    test2
+                  </div>
             </div>
-         </div>
+        </div>
+
+
+
+
+
     </div>    
 </template>
 
 <script>
-import Carousel from './PartnersCarousel.vue';
-import Stories from './PartnerStories.vue';
-import PartnerList from './PartnersPopup.vue'
-import StoriesList from './StoriesPopup.vue';
-export default {
-  components:{
-    Carousel,
-    Stories,
-    PartnerList,
-    StoriesList,
-   }
-}
+ 
 </script>
 
-<style>
-    .custom-nav-pills .nav-link, 
-    .custom-nav-pills .nav-link:hover .nav-link{
-    background-color: #FFFFFF;   
-    border: 1px solid;
-    border-radius: 10px;
-    color: #A70C0C;  
-            &:hover {
-            background-color: #A70C0C;   
-            border-color: #FFFFFF;  
-            color: #FFFFFF;  
-        }
-
-    }
-
-    .custom-nav-pills .nav-link.active, 
-    .custom-nav-pills .nav-link:hover .nav-link{
-    background-color: #A70C0C;   
-    color: #FFFFFF;  
-    border: 1px solid;
-    border-radius: 10px;
-    }
-    
+<style scoped>
+.nav-link.active {
+    background-color: #A70C0C !important;  
+    color: #FFFFFF !important; 
+}
 </style>
