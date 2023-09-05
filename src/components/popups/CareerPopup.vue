@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-outline-maroon position-absolute top-100 start-50 translate-middle mt-5" 
+    <button class="btn btn-outline-maroon" 
     data-bs-target="#career-list" data-bs-toggle="modal">View All</button>
 
     <div class="modal fade" id="career-list" aria-hidden="true" aria-labelledby="career-listLabel" tabindex="-1">
@@ -72,20 +72,5 @@
         </div>
     </div>
 
-    <div class="modal fade" id="career-details" aria-hidden="true" aria-labelledby="career-detailsLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="career-detailsLabel">Modal 2</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Hide this modal and show the first with the button below.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#career-list" data-bs-toggle="modal">Back to first</button>
-                </div>
-            </div>
-        </div>
-    </div>
+     
 </template>

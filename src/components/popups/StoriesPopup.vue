@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="btn btn-maroon mt-3" 
+    <button type="button" class="btn btn-outline-maroon" 
     data-bs-toggle="modal" data-bs-target="#partners-stories">
     View All</button>
 

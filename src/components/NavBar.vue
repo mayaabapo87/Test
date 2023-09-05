@@ -55,7 +55,8 @@
                             <a class="btn btn-outline-light m-1 bg-maroon" href="#location-view">Location</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light m-1 bg-maroon" href="#contact-view">Contact</a>
+                            <button type="button" class="btn btn-outline-light m-1 bg-maroon" data-bs-toggle="modal" data-bs-target="#contact-form">
+                            Contact</button>
                         </li>
                     </ul>
                 </div>
