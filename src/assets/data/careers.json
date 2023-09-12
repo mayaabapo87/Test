@@ -20,6 +20,7 @@
     }
     ]
     },
+
     {
     "id": 2,
     "jobname": "Mid-Level Software Developer",
@@ -88,6 +89,7 @@
         }
     ]
     },
+
     {
     "id": 3,
     "jobname": "Business Analyst",
@@ -104,6 +106,7 @@
         }
     ]
     },
+
     {
     "id": 4,
     "jobname": "Product Specialist",
@@ -131,7 +134,66 @@
         "quali": "Can communicate well with internal and external customers."
         }
     ]
-    }
-]
+    },
 
-  
+    {
+        "id": 5,
+        "jobname": "Field Technical Support",
+        "location": "Tuguegarao",
+        "summary": "Resolves network issues, configures operating systems and uses remote desktop connections to provide immediate support. The successful candidate will use email and chat applications to give clients quick answers to simple IT issues.",
+        "qualifications": [
+            {
+            "id": 1,
+            "quali": "Bachelor’s degree in STEM (Science, Technology, Engineering, and Mathematics) strand."
+            },
+            {
+            "id": 2,
+            "quali": "Enough knowledge in troubleshooting / resolving network issues, configuring operating systems and using remote desktop connections."
+            },
+            {
+            "id": 3,
+            "quali": "Must agree to rotating/ shifting schedule & travelling to different client sites."
+            },
+            {
+            "id": 4,
+            "quali": "Must have a valid driver's license."
+            },
+            {
+            "id": 5,
+            "quali": "Must own a laptop/ computer with accessible Wi-Fi at home."
+            },
+            {
+            "id":6,
+            "quali":"Must be residing in any of these areas:",
+            "subqualifications": [
+                {
+                "id": 1,
+                "subquali": "Angeles, Pampanga"
+                },
+                {
+                "id": 2,
+                "subquali": "Bacolod, Negros Occidental"
+                },
+                {
+                "id": 3,
+                "subquali": "Batangas City, Batangas"
+                },
+                {
+                "id": 4,
+                "subquali": "Bohol"
+                },
+                {
+                "id": 5,
+                "subquali": "Bukidnon"
+                },
+                {
+                "id": 6,
+                "subquali": "Butuan, Agusan del Norte"
+                }
+            ]
+            }
+
+           
+        ]
+    } 
+]

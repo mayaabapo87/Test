@@ -1,65 +1,39 @@
 <template>
- 
     <br  id="careers-view">  
-  
-    <div class="container-fluid my-1">
-        <!--Desktop-->
-        <div class="container d-none d-xl-block text-center">
+    <div class="container my-1">
             <h1 class="text-center text-dark fw-bold mt-5">CAREERS</h1>
             <hr class="border-secondary border-2 border-dark">
-                <div class="container d-none d-xl-block">
-                    <div id="carouselCareers" class="carousel  carousel-fade ">
-                         <div class="carousel-inner" style="width:100%;">
-                            <div class="carousel-item active text-center">  
-                                <div class="d-flex justify-content-evenly my-5">
-                                    <div class="card border-maroon border-2" style="width: 18rem;">
-                                        <img  width="200" height="200" src="../assets/icons/join.svg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Service Delivery Manager</h5>
-                                            <p class="card-text">Makati</p>
+                <div class="container">
+                    <div id="carouselCareers" class="carousel carousel-fade">
+                        <div class="carousel-inner overflow-auto p-xl-5 justify-content-center mx-auto">                   
+                            <div v-for="(set, index) in careerSets" :key="index" :class="['carousel-item', { active: index === 0 }]">
+                                <div v-for="detail in set" :key="detail.id" class="card border-maroon border-2 mx-4 my-4 px-2 w-75 mx-auto">
+                                    <div class="container">
+                                        <div class="row justify-content-center allign-items-center">
+                                            <div class="col-auto p-0 d-none d-sm-block">
+                                                <img  src="../assets/icons/join.svg" alt="..."/>
+
+                                            </div>
+                                            <div class="col px-0">
+                                                <div class="card-body allign-text-start px-0">
+                                                    <h5 class="card-title">{{ detail.jobname }}</h5>
+                                                    <p class="card-text">{{ detail.location }}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="container mb-4">
-                                            <button @click="$emit('careerDetails', careerID)" class="btn btn-outline-maroon" 
-                                            data-bs-target="#career-details" data-bs-toggle="modal"> Details </button>
-                                        </div>
-                                    </div>
-                                    <div class="card border-maroon border-2" style="width: 18rem;">
-                                        <img  width="200" height="200" src="../assets/icons/join.svg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Mid-Level Software Developer</h5>
-                                            <p class="card-text">Makati, CDO</p>
-                                         </div>
-                                         <div class="container mb-4">
-                                            <button class="btn btn-outline-maroon" data-bs-target="#career-details" data-bs-toggle="modal"> Details </button>
-                                         </div>
-                                    </div>  
-                                    <div class="card border-maroon border-2" style="width: 18rem;">
-                                        <img  width="200" height="200" src="../assets/icons/join.svg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Service Delivery Manager</h5>
-                                            <p class="card-text">Makati</p>
-                                        </div>
-                                        <div class="container mb-4">
-                                            <button class="btn btn-outline-maroon" data-bs-target="#career-details" data-bs-toggle="modal"> Details </button>
-                                        </div>
-                                    </div>        
-                                </div>                      
+                                             
+                                       
+                                            <div class="position-absolute top-100 start-50 translate-middle mt-1">
+                                                <CareerDetailsPopup :name="detail.id" />
+                                            </div>
+                                     </div>
+                                </div>
                             </div>
-                            <div class="carousel-item text-center my-5">
-                                <div class="d-flex justify-content-evenly">
-                                    <div class="card border-maroon border-2" style="width: 18rem;">
-                                        <img width="200" height="200" src="../assets/icons/join.svg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Product Specialist</h5>
-                                            <p class="card-text">Makati</p>
-                                        </div>
-                                        <div class="container mb-4">
-                                            <button class="btn btn-outline-maroon" data-bs-target="#career-details" data-bs-toggle="modal"> Details </button>
-                                        </div>
-                                    </div> 
-                                </div> 
-                            </div>                           
                         </div>
+                        <div class=" text-center mt-3">
+                            <button class="btn btn-outline-maroon " data-bs-target="#career-list" data-bs-toggle="modal">View All</button>
+                        </div>
+
                         <!--Left Arrow-->
                         <button class="carousel-control-prev top-50 start-0 translate-middle" type="button" data-bs-target="#carouselCareers" data-bs-slide="prev"
                             style="width: 40px; height: 50px;">
@@ -74,37 +48,41 @@
                         </button>
                     </div>
                 </div>
-                <CareerPopup />
-            <hr class="border-secondary border-2 border-dark">
-        </div>
-
-        <!--Tablet-->
-        <div class="container d-none d-sm-block d-xl-none d-xxl-none">
-        </div>
-
-        <!--Mobile-->
-        <div class="container d-inline d-block d-sm-none">
-        </div>
-    </div>
+             <hr class="border-secondary border-2 border-dark">
+     </div>
 </template>
 
-<script setup>
- 
+<script>
+import careerData from "../assets/data/careers.json"
+import CareerDetailsPopup from './popups/CareerDetailsPopup.vue';
+
+export default {
+    components:{
+        CareerDetailsPopup,
+     },
+
+    data() {
+        return {
+            careers: careerData,
+        };
+    },
+
+    computed: {
+      careerSets() {
+        const sets = [];
+        const careersCopy = [...this.careers];
+  
+        while (careersCopy.length > 0) {
+          sets.push(careersCopy.splice(0, 3));
+        }
+  
+        return sets;
+      },
+    },
+
+}
 </script>
 
-<style>
- /* xl screens */
- @media (min-width: 1200px) {
-    .carousel-inner {
-      height: 440px; 
-    }
-}
-/* xxl screens*/
-@media (min-width: 1400px) {
-    .carousel-inner {
-      height: 500px; 
-    }
-}
- 
-
+<style scoped>
+  
 </style>

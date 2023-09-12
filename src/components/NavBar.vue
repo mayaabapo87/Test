@@ -31,32 +31,31 @@
             <!--Navigation Tab-->
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas-navbar" aria-labelledby="offcanvas-navbarLabel">
                 <div class="offcanvas-header bg-maroon">
-                    <h5 class="offcanvas-title text-light border border-light rounded p-1" id="offcanvas-navbarLabel">Navigation</h5>
+                    <h5 class="offcanvas-title text-light border-light p-1" id="offcanvas-navbarLabel">Navigation</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body  ">
+                <div class="offcanvas-body">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="btn btn-outline-light m-1 bg-maroon" href="#about-view">About Us</a>
+                            <a class="nav-link m-1 nav-color" href="#about-view">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light m-1 bg-maroon" href="#services-view">Services</a>
+                            <a class="nav-link m-1 nav-color" href="#services-view">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light m-1 bg-maroon" href="#projects-view">Projects</a>
+                            <a class="nav-link m-1 nav-color" href="#projects-view">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light m-1 bg-maroon" href="#partners-view">Partners</a>
+                            <a class="nav-link m-1 nav-color" href="#partners-view">Partners</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light m-1 bg-maroon" href="#careers-view">Careers</a>
+                            <a class="nav-link m-1 nav-color" href="#careers-view">Careers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light m-1 bg-maroon" href="#location-view">Location</a>
+                            <a class="nav-link m-1 nav-color" href="#location-view">Location</a>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-outline-light m-1 bg-maroon" data-bs-toggle="modal" data-bs-target="#contact-form">
-                            Contact</button>
+                            <a type="button" class="nav-link m-1 nav-color" data-bs-toggle="modal" data-bs-target="#contactForm">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -83,47 +82,17 @@
     </nav>
 </template>
 <style>
-body::before {
-  margin-top: 60px;
-
-  content: "XS";
-  color: black;
-  font-size: 2rem;
-  font-weight: bold;
-  position: fixed;
-  top: 0;
-  right: 0;
- }
  
+ a.nav-color {
+  color: black;
+ }
 
-@media (min-width: 576px) {
-  body::before {
-    content: "SM";
-  }
-}
-
-@media (min-width: 768px) {
-  body::before {
-    content: "MD";
-  }
-}
-
+ 
 @media (min-width: 992px) {
-  body::before {
-    content: "LG";
-  }
+  
+  a.nav-color {
+  color: white;
+ }
 }
-
-@media (min-width: 1200px) {
-  body::before {
-    content: "XL";
-  }
-}
-
-@media (min-width: 1400px) {
-  body::before {
-    content: "XXL";
-  }
-}
-
+ 
 </style>
