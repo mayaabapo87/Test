@@ -61,9 +61,7 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                         <!--Left Arrow-->
                         <button class="carousel-control-prev top-50 start-0 translate-middle" type="button" data-bs-target="#carouselPartners" data-bs-slide="prev" style="width: 40px; height: 50px;">
@@ -118,10 +116,8 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-    
-                        </div>
+                            </div>
 
                             <!--Left Arrow-->
                             <button class="carousel-control-prev top-50 start-0 translate-middle" type="button" data-bs-target="#carouselStories" data-bs-slide="prev"
