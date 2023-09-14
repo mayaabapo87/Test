@@ -37,10 +37,11 @@
                                 <div class="card border-maroon border-2 h-100" style="width: auto;">
                                     <img width="150" height="150" src="../../assets/icons/join.svg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ detail.jobname }}</h5>
+                                        <h5 class="card-title">{{ detail.name }}</h5>
                                         <p class="card-text">{{ detail.location }}</p>
                                     </div>
-                                    <CareerDetailsPopup :name="detail.id" />
+                                    
+                                    <CareerDetailsPopup :careerId="detail.id" />
                                 </div>
                             </div>
                         </div>
@@ -55,12 +56,9 @@
 </template>
 
 <script>
-import careerData from "../../assets/data/careers.json"
+import axios from 'axios'
 import CareerDetailsPopup from "./CareerDetailsPopup.vue";
-import { ref } from 'vue'
-
-const careerID = ref(0)
-
+ 
 export default {
     components:{
         CareerDetailsPopup
@@ -68,21 +66,20 @@ export default {
 
     name: "CareerPopup",
     props: [
-        'name'
+        'careerId'
     ],
 
     data() {
         return {
-            careerID,
-            careers: careerData,
+            careers: [],
             selectedLocation: "1",
             searchQuery: ""
-        };
+        }
     },
 
-    methods: {
- 
-
+    mounted(){
+        axios.get('http://192.168.11.144:5001/api/careers')
+            .then(response => this.careers = response.data)
     },
 
     computed: {
@@ -102,17 +99,15 @@ export default {
         return Array.from(searched);
     },
 
-    filteredCareers() {
-        return this.careers.filter((detail) => {
-          const locationMatch = this.selectedLocation === "1" || detail.location === this.selectedLocation;
-          
-          const searchMatch = 
-            (detail.jobname.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
-            detail.location.toLowerCase().includes(this.selectedLocation.toLowerCase())) || detail.jobname.toLowerCase().includes(this.searchQuery.toLowerCase());
- 
-          return locationMatch && searchMatch;
-        });
-      },
+        filteredCareers() {
+            return this.careers.filter((detail) => {
+            const locationMatch = this.selectedLocation === "1" || detail.location === this.selectedLocation;
+            const searchMatch = 
+                (detail.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
+                detail.location.toLowerCase().includes(this.selectedLocation.toLowerCase())) || detail.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+            return locationMatch && searchMatch;
+            });
+        },
 
     },
 };
