@@ -1,7 +1,7 @@
 <template>
 <PartnersPopup />
 <ContactForm />
-<CareerDetailsPopup :careerId="1" />
+<CareerDetailsPopup />
 <ResumePopup />
 <CareerPopup />
 <StoriesPopup />

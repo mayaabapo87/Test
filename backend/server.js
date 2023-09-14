@@ -23,4 +23,4 @@ app.get("/", (req, res) => {
     res.send("HI");
 })
 
-app.use('/api/careers', careerRoutes);
+app.use('/api', careerRoutes);

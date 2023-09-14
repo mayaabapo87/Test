@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-maroon p-0">
+    <nav class="navbar navbar-expand-lg bg-maroon fixed-top p-0">
         <div class="container">
             <!--Toggler Icon-->
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar" aria-controls="offcanvasExample">
