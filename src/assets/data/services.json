@@ -1,0 +1,23 @@
+[
+    {
+      "image": "services1",
+      "title": "Trade & Logistics",
+      "details": "End-to-end multi-branch retail systems hardware, software, network infrastructure, operations, and support"
+    },
+    {
+      "image": "services2",
+      "title": "Retail & Supply Chain",
+      "details": "Software as a Service platform for brokers, importers, and exporters"
+    },
+    {
+      "image": "services3",
+      "title": "Electronic Payments",
+      "details": "Electronic document creation, delivery, and processing for institutions and their clients"
+    },
+    {
+      "image": "services4",
+      "title": "Electronic Government",
+      "details": "Secure payment solutions designed for the local and other emerging markets"
+    }
+  ]
+  

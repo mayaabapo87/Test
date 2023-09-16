@@ -11,19 +11,17 @@
                             <div class="container">
                                 <div class="row justify-content-center allign-items-center">
                                     <div class="col-auto p-0 d-none d-sm-block">
-                                        <img src="../assets/icons/join.svg" alt="..."/>
+                                        <img src="@/assets/icons/join.svg" alt="..."/>
                                     </div>
                                     <div class="col px-0">
                                         <div class="card-body allign-text-start px-0">
-                                            <h5 class="card-title">{{ detail.name }}</h5>
+                                            <h5 class="card-title">{{ detail.jobname }}</h5>
                                             <p class="card-text">{{ detail.location }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="position-absolute top-100 start-50 translate-middle mt-1">
- 
-                                    <CareerDetailsPopup :careerId="detail.id" />
- 
+                                    <CareerDetailsPopup :name="detail.id" />
                                 </div>
                             </div>
                         </div>
@@ -52,24 +50,19 @@
 </template>
 
 <script>
-import CareerDetailsPopup from './popups/CareerDetailsPopup.vue'
-import axios from 'axios'
+import careerData from "../assets/data/careers.json"
+import CareerDetailsPopup from './popups/CareerDetailsPopup.vue';
 
 export default {
-    data() {
-        return {
-            careers: []
-        }
-    },
-
-    mounted(){
-        axios.get('http://192.168.11.144:5001/api/careers')
-            .then(response => this.careers = response.data)
-    },
-
     components:{
         CareerDetailsPopup,
      },
+
+    data() {
+        return {
+            careers: careerData,
+        };
+    },
 
     computed: {
       careerSets() {

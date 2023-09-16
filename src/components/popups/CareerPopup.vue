@@ -9,7 +9,7 @@
                             <label class="visually-hidden" for="searchInput">Search</label>
                             <div class="input-group">
                                 <div class="input-group-text">
-                                    <img width="30" height="30" src="../../assets/icons/search.svg" alt="...">
+                                    <img width="30" height="30" src="@/assets/icons/search.svg" alt="...">
                                 </div>
                                 <input v-model="searchQuery" type="text" class="form-control" id="searchInput" placeholder="Search...">
                             </div>
@@ -18,7 +18,7 @@
                             <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
                             <div class="input-group">
                                 <div class="input-group-text">
-                                    <img width="30" height="30" src="../../assets/icons/location.svg" alt="...">
+                                    <img width="30" height="30" src="@/assets/icons/location.svg" alt="...">
                                 </div>
                                 <select v-model="selectedLocation" class="form-select" id="career-location">
                                     <option value="1">All</option>
@@ -35,13 +35,12 @@
                         <div class="row"> 
                             <div v-for="detail in filteredCareers" :key="detail.id" class="col-lg-4 my-1">   
                                 <div class="card border-maroon border-2 h-100" style="width: auto;">
-                                    <img width="150" height="150" src="../../assets/icons/join.svg" class="card-img-top" alt="...">
+                                    <img width="150" height="150" src="@/assets/icons/join.svg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ detail.name }}</h5>
+                                        <h5 class="card-title">{{ detail.jobname }}</h5>
                                         <p class="card-text">{{ detail.location }}</p>
                                     </div>
-                                    
-                                    <CareerDetailsPopup :careerId="detail.id" />
+                                    <CareerDetailsPopup :name="detail.id" />
                                 </div>
                             </div>
                         </div>
@@ -56,9 +55,12 @@
 </template>
 
 <script>
-import axios from 'axios'
+import careerData from "../../assets/data/careers.json"
 import CareerDetailsPopup from "./CareerDetailsPopup.vue";
- 
+import { ref } from 'vue'
+
+const careerID = ref(0)
+
 export default {
     components:{
         CareerDetailsPopup
@@ -66,20 +68,21 @@ export default {
 
     name: "CareerPopup",
     props: [
-        'careerId'
+        'name'
     ],
 
     data() {
         return {
-            careers: [],
+            careerID,
+            careers: careerData,
             selectedLocation: "1",
             searchQuery: ""
-        }
+        };
     },
 
-    mounted(){
-        axios.get('http://192.168.11.144:5001/api/careers')
-            .then(response => this.careers = response.data)
+    methods: {
+ 
+
     },
 
     computed: {
@@ -99,15 +102,17 @@ export default {
         return Array.from(searched);
     },
 
-        filteredCareers() {
-            return this.careers.filter((detail) => {
-            const locationMatch = this.selectedLocation === "1" || detail.location === this.selectedLocation;
-            const searchMatch = 
-                (detail.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
-                detail.location.toLowerCase().includes(this.selectedLocation.toLowerCase())) || detail.name.toLowerCase().includes(this.searchQuery.toLowerCase());
-            return locationMatch && searchMatch;
-            });
-        },
+    filteredCareers() {
+        return this.careers.filter((detail) => {
+          const locationMatch = this.selectedLocation === "1" || detail.location === this.selectedLocation;
+          
+          const searchMatch = 
+            (detail.jobname.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
+            detail.location.toLowerCase().includes(this.selectedLocation.toLowerCase())) || detail.jobname.toLowerCase().includes(this.searchQuery.toLowerCase());
+ 
+          return locationMatch && searchMatch;
+        });
+      },
 
     },
 };

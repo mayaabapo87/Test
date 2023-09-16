@@ -20,9 +20,9 @@
                                 <!--Desktop Partners-->
                                 <div class="d-none d-xl-block">
                                     <div class="d-flex justify-content-center">
-                                        <div class="card border-0  w-75">
+                                        <div class="card border-1  w-75">
                                             <div class="card-body">
-                                                <img width="150" height="150" :src="require(`../assets/logos/${set.logo}.svg`)" class="card-img-top" alt="..."/>
+                                                <img width="150" height="150" :src="require(`../assets/logos/${set.icon}.svg`)" class="card-img-top" alt="..."/>
                                                 <div class="text-center">
                                                     <h2 class="text-maroon">{{ set.name }}</h2>
                                                     <p class=" text-dark text-truncate">{{ set.description }}</p>
@@ -34,9 +34,9 @@
 
                                 <!--Tablet Partners-->
                                 <div class="d-none d-sm-block d-xl-none d-xxl-none h-100 w-100  justify-content-center">
-                                    <div class="card border-0 h-100 w-75 mx-auto">
+                                    <div class="card h-100 w-75 mx-auto">
                                         <div class="card-body">
-                                            <img width="150" height="150" :src="require(`../assets/logos/${set.logo}.svg`)" class="card-img-top" alt="..."/>
+                                            <img width="150" height="150" :src="require(`../assets/logos/${set.icon}.svg`)" class="card-img-top" alt="..."/>
                                             <div class="text-center">
                                                 <h2 class="text-maroon">{{ set.name }}</h2>
                                                 <div class="container">
@@ -52,7 +52,7 @@
                                     <div class="d-flex justify-content-center align-items-center">
                                         <div class="card border-0" style="height: 300px;">
                                             <div class="card-body">
-                                                <img width="100" height="100" :src="require(`../assets/logos/${set.logo}.svg`)" class="card-img-top" alt="..."/>
+                                                <img width="100" height="100" :src="require(`../assets/logos/${set.icon}.svg`)" class="card-img-top" alt="..."/>
                                                 <div class="text-center">
                                                     <h2 class="text-maroon ">{{ set.name }}</h2>
                                                     <p class="text-truncate">{{ set.description }}</p>
@@ -144,7 +144,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import storiesData from "../assets/data/stories.json"
+import partnerData from "../assets/data/partners.json";
 
 
 export default {
@@ -152,29 +153,11 @@ export default {
     },
     data() {
         return {
-            partnerData: [],
-            storiesData: [], 
+            partnerData: partnerData,
+            storiesData: storiesData, 
 
         };
     },
-
-
-    async mounted() {
-        try {
-            axios.get('http://192.168.11.144:5001/api/partners').
-            then(response => this.partnerData = response.data)
-        } catch (error) {
-            console.error('Error fetching partner data:', error);
-        }
-
-        try {
-            axios.get('http://192.168.11.144:5001/api/stories')
-            .then(response => this.storiesData = response.data)
-        } catch (error) {
-        console.error('Error fetching story data:', error);
-        }
-    },
- 
 }
 </script>
 

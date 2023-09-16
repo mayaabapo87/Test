@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="partnersPopup" tabindex="-1" aria-labelledby="partners-popupLabel" aria-hidden="true">
+    <div class="modal fade" id="projectsPopup" tabindex="-1" aria-labelledby="partners-popupLabel" aria-hidden="true">
         <div class="modal-xl modal-dialog-centered modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -21,11 +21,15 @@
                             <div class="card border-1 border h-100">
                                 <div class="card-body">
                                     <div class="container text-center">
-                                        <img width="150" height="150" :src="require(`../../assets/logos/${set.icon}.svg`)" class="card-img-top" alt="..."/>
-                                        <h5 class="card-title text-maroon">{{ set.name }}</h5>
-                                        <p class="fs-6 text-dark">{{ set.description }}</p>
+                                        <img height="120" :src="require(`@/assets/projects/${set.image}.png`)" class="card-img-top" alt="..."/>
+                                        <h5 class="card-title text-maroon">{{ set.title }}</h5>
+                                        <p class="fs-6 text-dark">{{ set.shortDescription }}</p>
                                     </div>
                                 </div>
+                                <button type="button" class="btn btn-outline-maroon" data-bs-toggle="modal"
+                                :data-bs-target="'#projectDetails' + index">
+                                Discover More
+                              </button>
                             </div>
                         </div>
                     </div>
@@ -39,21 +43,21 @@
 </template>
 
 <script>
-import partnerData from "../../assets/data/partners.json";
+import projectsData from "@/assets/data/projects.json";
 
 export default {
     data() {
         return {
-        partners: partnerData,
+        projects: projectsData,
         searchQuery: ""
         };
     },
 
     computed: {
     filteredPartners() {
-        return this.partners.filter((partner) => {          
+        return this.projects.filter((project) => {          
             const searchMatch =
-                partner.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+                project.title.toLowerCase().includes(this.searchQuery.toLowerCase())
            return searchMatch;
         });
       },

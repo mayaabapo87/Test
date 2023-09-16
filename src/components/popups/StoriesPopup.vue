@@ -13,7 +13,6 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4>{{ set.title }}</h4>
                                         <p class="text-dark">{{ set.story }}</p>
                                     </div>
                                 </div>
@@ -30,25 +29,13 @@
 </template>
 
 <script>
-import axios from 'axios'
+import storiesData from '../../assets/data/stories.json'
 
 export default{
     data() {
         return {
-            stories: [],
+            stories: storiesData,
         };
     },
-
-    
-    async mounted() {
-
-        try {
-            axios.get('http://192.168.11.144:5001/api/stories')
-            .then(response => this.stories = response.data)
-        } catch (error) {
-        console.error('Error fetching story data:', error);
-        }
-    },
-    
 }
 </script>
