@@ -40,8 +40,12 @@
                                             <div class="text-center">
                                                 <h2 class="text-maroon">{{ set.title }}</h2>
                                                 <div class="container">
-                                                    <p class="text-dark text-truncate">{{ set.shortDescription }}</p>
+                                                    <p class="text-dark ">{{ set.shortDescription }}</p>
                                                 </div>
+                                                <button type="button" class="btn btn-outline-maroon" data-bs-toggle="modal"
+                                                :data-bs-target="'#projectDetails' + index">
+                                                Discover More
+                                              </button>
                                             </div>
                                         </div>
                                     </div>
@@ -50,13 +54,17 @@
                                 <!--Phone Partners-->
                                 <div class="d-block d-sm-none ">
                                     <div class="d-flex justify-content-center align-items-center">
-                                        <div class="card border-0" style="height: 300px;">
+                                        <div class="card border-0" style="height: 400px;">
                                             <div class="card-body">
                                                 <img width="100" height="100" :src="require(`@/assets/projects/${set.image}.png`)" class="card-img-top" alt="..."/>
                                                 <div class="text-center">
                                                     <h2 class="text-maroon ">{{ set.title }}</h2>
-                                                    <p class="text-truncate">{{ set.shortDescription }}</p>
+                                                    <p class="text-dark text-truncate">{{ set.shortDescription }}</p>
                                                     </div>
+                                                    <button type="button" class="btn btn-outline-maroon" data-bs-toggle="modal"
+                                                    :data-bs-target="'#projectDetails' + index">
+                                                    Discover More
+                                                  </button>
                                             </div>
                                         </div>
                                     </div>

@@ -9,7 +9,7 @@
       <div v-for="(service, index) in services" :key="index" class="col-md-6">
         <div class="service-item border border-secondary rounded p-4 mb-4"
           style="background-color: #ccc; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);">
-          <!-- Use the computed property for image source -->
+         
           <img :src="getImagePath(service.image)" :alt="'Service ' + (index + 1)" class="service-image img-fluid rounded"
             style="max-width: 100%; height: auto; border-radius: 5px;" />
 
@@ -23,18 +23,18 @@
 </template>
 
 <script>
-import servicesData from '@/assets/data/services.json'; // Import the JSON data
+import servicesData from '@/assets/data/services.json'; 
 
 export default {
   name: 'ServicesPage',
   data() {
     return {
-      services: servicesData, // Use the imported data
+      services: servicesData, 
     };
   },
   methods: {
     getImagePath(imageFileName) {
-      // Assuming image files are in '@/assets/services/' directory with '.png' extension
+      
       return require(`@/assets/services/${imageFileName}.png`);
     },
   },
