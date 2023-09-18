@@ -1,26 +1,34 @@
-const express = require("express");
-const careerRoutes = require('./src/careers/routes');
-
-const dotenv = require("dotenv").config();
+const express = require('express');
+const { Pool } = require('pg');
+const cors = require('cors'); // Import the cors middleware
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 3000;
 
-// Enable CORS for all routes
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-  });
-  
-app.use(express.json());
-
-app.listen(port, () => {
-    console.log(`Sever running on port ${port}`);
+// PostgreSQL database configuration
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'apollo',
+  password: 'qwerty12731.',
+  port: 5432, // PostgreSQL default port
 });
 
-app.get("/", (req, res) => {
-    res.send("HI");
-})
+app.use(express.json());
 
-app.use('/api', careerRoutes);
+// Add the cors middleware here
+app.use(cors()); // This allows all CORS requests. You can configure it for specific origins if needed.
+
+// Define a route to fetch project data from the database
+app.get('/projects', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM projects');
+    res.json(rows);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

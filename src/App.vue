@@ -1,12 +1,12 @@
 <template>
 <PartnersPopup />
 <ProjectsPopup />
-
 <ContactForm />
 <CareerDetailsPopup />
 <ResumePopup />
 <CareerPopup />
 <StoriesPopup />
+
   <nav>
     <Navbar />
     <Landing />
@@ -38,9 +38,9 @@ import CareerPopup from './components/popups/CareerPopup.vue';
 import ResumePopup from './components/popups/ResumePopup.vue'
 import PartnersPopup from './components/popups/PartnersPopup.vue'
 import ProjectsPopup from './components/popups/ProjectsPopup.vue'
-
-
 import StoriesPopup from './components/popups/StoriesPopup.vue'
+
+
 
 export default {
   components:{
@@ -59,7 +59,6 @@ export default {
     ResumePopup,
     PartnersPopup,
     ProjectsPopup,
-   
 
     StoriesPopup,
   },

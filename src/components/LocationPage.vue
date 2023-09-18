@@ -1,5 +1,6 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-maroon fw-bold mt-5" style="height: 80px;">
+  <br  id="location-view">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-maroon fw-bold mt-5" style="height: 80px; background-image: linear-gradient(to bottom, #d93c3c, #6e0a0a);">
         <div class="d-flex justify-content-center align-items-center flex-grow-1">
           <h1 class="text-center fw-bold" style="color: white;">EXPLORE OUR LOCATIONS</h1>
         </div>

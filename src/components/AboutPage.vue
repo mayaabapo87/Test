@@ -1,21 +1,30 @@
 <template>
+  <br  id="about-view">
   <div>
-    <nav class="navbar navbar-expand-lg bg-maroon" style="height: 80px;">
-      <div class="mx-auto">
-        <div class="btn-group">
-          <button
-            v-for="(tab) in tabs"
-            :key="tab"
-            class="btn btn-custom"
-            :class="{ active: currentTab === tab }"
-            @click="showTab(tab)"
-            :style="{ marginRight: '14px' }"
-          >
-            {{ tab }}
-          </button>
+    <nav class="navbar navbar-expand-lg bg-maroon mt-5" style="background-image: linear-gradient(to bottom, #d93c3c, #6e0a0a);">
+      <div class="container-fluid text-center">
+        <div class="d-flex justify-content-center align-items-center mx-auto">
+          <div class="btn-group" role="group">
+            <div class="d-flex flex-wrap justify-content-center">
+              <button
+                v-for="(tab) in tabs"
+                :key="tab"
+                class="btn btn-outline-light btn-lg m-2"
+                :class="{ active: currentTab === tab }"
+                @click="showTab(tab)"
+              >
+                {{ tab }}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
+    
+ 
+  
+
+  
 
     <!-- About Tab -->
     <div v-if="currentTab === 'About'" class="container">
