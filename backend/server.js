@@ -1,24 +1,13 @@
 const express = require('express');
-const { Pool } = require('pg');
 const cors = require('cors');
+const pool = require('./db'); 
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
+app.use(cors());
 
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'apollo',
-  password: 'qwerty12731.',
-  port: 5432, 
-});
-
-app.use(express.json());
-
-
-app.use(cors()); 
-
-
+// projects Routes
 app.get('/projects', async (req, res) => {
   try {
     const { rows } = await pool.query('SELECT * FROM projects');
@@ -28,7 +17,18 @@ app.get('/projects', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+// projects Routes
+app.get('/services', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM services');
+    res.json(rows);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

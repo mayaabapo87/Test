@@ -24,8 +24,8 @@
         <!-- place it at left column for location details/information -->
         <div class="col-md-6 location-info">
           <div v-if="selectedLocation === 'location1'">
-            <h2 class="title">Apollo Makati</h2>
-            <p class="location-details">
+            <h2 class="title fw-bold text-maroon">Apollo Makati</h2>
+            <p class=" mt-4 location-details">
               Apollo Center, 4120 Kalayaan Ave,<br>
               Makati City 1205,
               Chino Roces-Kalayaan intersection<br>
@@ -39,8 +39,8 @@
             </p>
           </div>
           <div v-if="selectedLocation === 'location2'">
-            <h2 class="title">Apollo CDO</h2>
-            <p class="location-details smaller-text">
+            <h2 class="title fw-bold text-maroon">Apollo CDO</h2>
+            <p class=" mt-4  location-details ">
               Door 7,<br>
               2nd floor Juan Fuel Building <br>(ECOOIL Gasoline station),<br>
               Jr Borja Extension, Camaman-an,<br>
@@ -48,8 +48,8 @@
             </p>
           </div>
           <div v-if="selectedLocation === 'location3'">
-            <h2 class="title">Apollo Davao</h2>
-            <p class="location-details smaller-text">
+            <h2 class="title  fw-bold text-maroon" >Apollo Davao</h2>
+            <p class=" mt-4 location-details">
               36 Lacson St, <br>
               Barangay Barrio Obrero, <br>
               Davao City, <br>
@@ -101,10 +101,6 @@
   </script>
   
   <style scoped>
-  
- 
-  
-  
   .location-page {
     margin-top: 100px;
     background-color: #e0e0e0;
@@ -137,8 +133,8 @@
     background-color: white;
   }
   .location-details {
-    font-size: 14px;
     font-size: 1.2rem;
+    text-align: center;
   }
   
   .location-map {
@@ -146,6 +142,9 @@
     border: 4px solid #ccc;
     border-radius: 10px;
     background-color: white;
+  }
+  .title{
+    text-align: center;
   }
   
   @media screen and (max-width: 800px){

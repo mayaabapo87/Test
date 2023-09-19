@@ -1,6 +1,6 @@
 <template>
-  <section id="projects-view" class="mt-5 py-5" style="background-color: #e9ecef;">
-  <div class="container">
+  <section id="projects-view" class=" py-5" style="background-color: #ccc;">
+  <div class="container mt-5">
     <h1 class="text-center text-dark fw-bold mt-4">OUR PROJECTS</h1>
     <hr class="border-secondary border-2 border-dark">
     <div class="tab-content my-2 h-100">
@@ -24,7 +24,7 @@
                         </div>
                         <button type="button" class="button-more btn-outline-maroon" data-bs-toggle="modal"
                           :data-bs-target="'#projectDetails' + index">
-                          Read More
+                          Learn More
                         </button>
                       </div>
 
@@ -36,8 +36,7 @@
                 <div class="d-none d-sm-block d-xl-none d-xxl-none h-100 w-100  justify-content-center">
                   <div class="card h-100 w-75 mx-auto">
                     <div class="card-body">
-                      <img width="150" height="150" :src="require(`@/assets/projects/${set.image}.png`)"
-                        class="card-img-top" alt="..." />
+                      <img :src="require(`@/assets/projects/${set.image}.png`)" class="card-img-top tablet-image img-fluid" alt="..." />
                       <div class="text-center">
                         <h2 class="text-maroon">{{ set.title }}</h2>
                         <div class="container">
@@ -45,27 +44,27 @@
                         </div>
                         <button type="button" class="button-more btn-outline-maroon" data-bs-toggle="modal"
                           :data-bs-target="'#projectDetails' + index">
-                          Read More
+                          Learn More
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
-
+                
                 <!--Phone Partners-->
                 <div class="d-block d-sm-none ">
                   <div class="d-flex justify-content-center align-items-center">
-                    <div class="card border-0" style="height: 400px;">
+                    <div class="card border-0" >
                       <div class="card-body">
-                        <img width="100" height="100" :src="require(`@/assets/projects/${set.image}.png`)"
-                          class="card-img-top" alt="..." />
+                        <img :src="require(`@/assets/projects/${set.image}.png`)"
+                          class="card-img-top phone-image img-fluid"  alt="..." />
                         <div class="text-center">
                           <h2 class="text-maroon ">{{ set.title }}</h2>
-                          <p class="text-dark text-truncate">{{ set.shortdescription }}</p>
+                          <p class="text-dark ">{{ set.shortdescription }}</p>
                         </div>
                         <button type="button" class="button-more btn-outline-maroon" data-bs-toggle="modal"
                           :data-bs-target="'#projectDetails' + index">
-                          Discover More
+                          Learn More
                         </button>
                       </div>
                     </div>
@@ -107,8 +106,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p v-html="set.details"></p>
-          <!-- You can display more project details here -->
+          <p style="text-align:justify" v-html="set.details"></p>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
@@ -132,13 +130,13 @@ export default {
     };
   },
   created() {
-    // Fetch project data from the backend API
+    
     this.fetchProjectsData();
   },
   methods: {
     async fetchProjectsData() {
       try {
-        const response = await fetch('http://localhost:3000/projects'); // Use the URL without "import"
+        const response = await fetch('http://localhost:3000/projects'); 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -153,6 +151,15 @@ export default {
 </script>
 <style scoped>
 
+.tablet-image {
+  max-width: 70%;
+  height: auto;
+}
+.phone-image {
+  max-width: 70%;
+  height: auto;
+}
+
 
 /* MODERN CLOSE BUTTON */
 .close {
@@ -160,8 +167,8 @@ export default {
   display: inline-block;
   width: 30px;
   height: 30px;
-  background: radial-gradient(circle, #ff5733, #ac0c0c); /* Gradient background */
-  border-radius: 50%; /* Circular padding */
+  background: radial-gradient(circle, #ff5733, #ac0c0c);
+  border-radius: 50%;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
@@ -172,22 +179,23 @@ export default {
   content: '';
   position: absolute;
   width: 2px;
-  height: 24px;
-  top: 3px;
-  left: 14px;
-  background-color: #fff; /* Color of the close icon */
+  height: 12px;
+  top: 50%; 
+  left: 50%; 
+  background-color: #fff;
+  transform: translate(-50%, -50%); 
 }
 
 .close::before {
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .close::after {
-  transform: rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .close:hover {
-  transform: scale(1.2); /* Add a hover effect to make it slightly larger on hover */
+  transform: scale(1.2);
 }
 
 /* MODERN MORE BUTTON  */

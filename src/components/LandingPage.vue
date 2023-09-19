@@ -1,9 +1,12 @@
 <template>
+
     <div class="container-fluid">
         <br id="landing-view">
 
         <!--Desktop-->
+      
         <div class="container d-none d-xl-block">
+          
             <div id="carouselLanding" class="carousel  carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner" style="width:100%;">
                     <div class="carousel-item active text-center">
@@ -199,9 +202,10 @@
                             </div>
                         </div>
                     </div>                             
-                </div>                       
+                </div>                         
             </div>
-        </div>
+        </div>  
+        
      </div>
 </template>
      

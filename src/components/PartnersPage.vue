@@ -1,7 +1,7 @@
 <template>
-    <br  id="partners-view">
-    <div class="container my-5">
-        <h1 class="text-center text-dark fw-bold mt-5">OUR PARTNERS</h1>
+    <section id="partners-view" class="py-5" style="background-color: #e9ecef;">
+    <div class="container mt-5">
+        <h1 class="text-center text-dark fw-bold ">OUR PARTNERS</h1>
         <hr class="border-secondary border-2 border-dark">
         <ul class="nav nav-pills justify-content-center" role="tablist">
             <li class="nav-item mx-3">
@@ -141,6 +141,7 @@
         </div>
         <hr class="border-secondary border-2 border-dark">
     </div>    
+    </section>
 </template>
 
 <script>
