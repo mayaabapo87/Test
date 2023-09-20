@@ -7,13 +7,12 @@
 </head>
 
 <body>
-  <div class="container bg-maroon">
-    <div class="jumbotron text-center bg-maroon">
-      <h1 class="display-4 text-white font-weight-bold">Welcome to the Admin Panel</h1>
-      <p class="lead text-white">Manage your projects with ease.</p>
+  <div class="container">
+    <div class="jumbotron text-center" style="padding: 30px; ">
+      <h3 class="display-5 text-dark font-weight-bold" style="font-size: 30px;">Manage Your Projects</h3>
     </div>
   </div>
-
+</body>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -43,7 +42,7 @@
 
 
 <body>
-  <div class="container">
+  <div id="projects" class="container" >
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Admin Panel</a>
     </nav>
@@ -76,10 +75,9 @@
               </p>
 
              
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProjectModal-<%= project.id %>">
+              <button type="button" class="btn btn-secondary bg-dark " data-toggle="modal" data-target="#editProjectModal-<%= project.id %>">
                 Edit Project
               </button>
-
               <!-- Modal -->
               <div class="modal fade" id="editProjectModal-<%= project.id %>" tabindex="-1" role="dialog"
                 aria-labelledby="editProjectModalLabel-<%= project.id %>" aria-hidden="true">
@@ -112,14 +110,14 @@
                           <textarea class="form-control" id="newDetails" name="newDetails" rows="4"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Update Project</button>
+                        <button type="submit" class="btn btn-secondary">Update Service</button>
                       </form>
                       <form action="/deleteProject/<%= project.id %>" method="post" class="mt-3">
                         <button type="submit" class="btn btn-danger">Delete Project</button>
                       </form>
                     </div>
                     <div class="modal-footer"> 
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-danger bg-maroon" data-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>
@@ -152,7 +150,7 @@
           <label for="details">Details:</label>
           <textarea class="form-control" id="details" name="details" rows="4" placeholder="Details" required></textarea>
         </div>
-        <button type="submit" class="btn btn-success">Add Project</button>
+        <button type="button" class="btn btn-secondary bg-dark " >Add Project </button>
       </form>
     </div>
   </div>

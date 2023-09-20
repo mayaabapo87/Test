@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+    <header class="bg-maroon text-white text-center p-4">
+        <h1 class="font-weight-bold" >APOLLO ADMIN DASHBOARD</h1>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e9ecef; border: 1px solid;">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                style="font-size: 24px; padding: 10px;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="text-align: center;">
+                <ul class="navbar-nav mx-auto"> <!-- Use "mx-auto" to center align the buttons -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);" onclick="loadServices()">
+                            <i class="fas fa-cogs mr-2"></i>Manage Services
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);" onclick="loadProjects()">
+                            <i class="fas fa-tasks mr-2"></i>Manage Projects
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+
+
+    <div id="content">
+        <!-- Content loaded dynamically here (initially Manage Services) -->
+        <script>
+            // Load the Manage Services content by default
+            loadServices();
+
+            function loadServices() {
+                // Load the content for Manage Services section dynamically
+                fetch('/admin-services') // Replace with the actual URL for loading admin-services content
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('content').innerHTML = data;
+                    });
+            }
+
+            function loadProjects() {
+                // Load the content for Manage Projects section dynamically
+                fetch('/admin-projects') // Replace with the actual URL for loading admin-projects content
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('content').innerHTML = data;
+                    });
+            }
+        </script>
+    </div>
+
+    <footer class="bg-dark text-white text-center p-3">
+        <!-- Footer content can go here -->
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

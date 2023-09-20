@@ -15,11 +15,15 @@ app.set('views', path.join(__dirname, 'views'));
 const projectsRoutes = require('./projects');
 const servicesRoutes = require('./services');
 
-
 app.use('/', projectsRoutes);
 app.use('/', servicesRoutes);
 
+// Define a route for the admin dashboard
+app.get('/admin', (req, res) => {
+  // Render the admin dashboard EJS template
+  res.render('admin-dashboard');
+});
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
