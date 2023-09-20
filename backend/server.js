@@ -1,34 +1,27 @@
 const express = require('express');
 const cors = require('cors');
-const pool = require('./db'); 
-
+const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
+const path = require('path');
 
+app.use(express.json());
 app.use(cors());
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-// projects Routes
-app.get('/projects', async (req, res) => {
-  try {
-    const { rows } = await pool.query('SELECT * FROM projects');
-    res.json(rows);
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-// projects Routes
-app.get('/services', async (req, res) => {
-  try {
-    const { rows } = await pool.query('SELECT * FROM services');
-    res.json(rows);
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+// Import the route files
+const projectsRoutes = require('./projects');
+const servicesRoutes = require('./services');
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+// Use the routes
+app.use('/', projectsRoutes);
+app.use('/', servicesRoutes);
+
+// Add more routes as needed
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });

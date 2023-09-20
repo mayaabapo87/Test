@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container bg-maroon">
+    <div class="jumbotron text-center bg-maroon">
+      <h1 class="display-4 text-white font-weight-bold">Welcome to the Admin Panel</h1>
+      <p class="lead text-white">Manage your projects with ease.</p>
+    </div>
+  </div>
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .card-header {
+      background-color: #ffffff;
+      font-weight: bold;
+    }
+
+    .project-card {
+      margin-bottom: 20px;
+    }
+
+    .card-body {
+      height: auto;
+      overflow: hidden;
+    }
+    .bg-maroon {
+      background-image: linear-gradient(to bottom, #d93c3c, #6e0a0a);
+    }
+  </style>
+</body>
+
+</html>
+
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Admin Panel</a>
+    </nav>
+
+    <% if (notification) { %>
+      <div class="alert alert-success mt-4">
+        <%= notification %>
+      </div>
+    <% } %>
+
+    <div class="row">
+      <% projects.forEach((project) => { %>
+        <div class="col-md-6">
+          <div class="card project-card ">
+            <div class="card-header bg-maroon text-white font-weight-bold">
+              <%= project.title %>
+            </div>
+            <div class="card-body">
+              <p class="card-text "><strong>ID:</strong>
+                <%= project.id %>
+              </p>
+              <p class="card-text"><strong>Image:</strong>
+                <%= project.image %>
+              </p>
+              <p class="card-text"><strong>Short Description:</strong>
+                <%= project.shortdescription %>
+              </p>
+              <p class="card-text"><strong>Details:</strong>
+                <%= project.details %>
+              </p>
+
+              <!-- Button to trigger the modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProjectModal-<%= project.id %>">
+                Edit Project
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="editProjectModal-<%= project.id %>" tabindex="-1" role="dialog"
+                aria-labelledby="editProjectModalLabel-<%= project.id %>" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editProjectModalLabel-<%= project.id %>">Edit Project - <%= project.title %>
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="/updateProject/<%= project.id %>" method="post">
+                        <!-- Form fields go here, same as in your original code -->
+                        <div class="form-group">
+                          <label for="newTitle-<%= project.id %>">New Title:</label>
+                          <input type="text" class="form-control" id="newTitle-<%= project.id %>" name="newTitle">
+                        </div>
+                        <div class="form-group">
+                          <label for="newImage">New Image URL:</label>
+                          <input type="text" class="form-control" id="newImage" name="newImage">
+                        </div>
+                        <div class="form-group">
+                          <label for="newShortDescription">New Short Description:</label>
+                          <textarea class="form-control" id="newShortDescription" name="newShortDescription" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="newDetails">New Details:</label>
+                          <textarea class="form-control" id="newDetails" name="newDetails" rows="4"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Update Project</button>
+                      </form>
+                      <form action="/deleteProject/<%= project.id %>" method="post" class="mt-3">
+                        <button type="submit" class="btn btn-danger">Delete Project</button>
+                      </form>
+                    </div>
+                    <div class="modal-footer"> <!-- Modal footer for close button -->
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+
+   <div class="card project-card ">
+      <div class="card-header bg-maroon text-white font-weight-bold">
+      <h2>Add New Project</h2>
+      </div>
+      <div class=" p-5  bg-white rounded">
+      <form action="/addProject" method="post">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL:</label>
+          <input type="text" class="form-control" id="image" name="image" placeholder="Image URL" required>
+        </div>
+        <div class="form-group">
+          <label for="shortdescription">Short Description:</label>
+          <textarea class="form-control" id="shortdescription" name="shortdescription" rows="4" placeholder="Short Description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="details">Details:</label>
+          <textarea class="form-control" id="details" name="details" rows="4" placeholder="Details" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Add Project</button>
+      </form>
+    </div>
+  </div>
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
