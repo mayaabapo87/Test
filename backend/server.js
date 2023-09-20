@@ -12,15 +12,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Import the route files
 const projectsRoutes = require('./projects');
 const servicesRoutes = require('./services');
 
-// Use the routes
+
 app.use('/', projectsRoutes);
 app.use('/', servicesRoutes);
 
-// Add more routes as needed
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

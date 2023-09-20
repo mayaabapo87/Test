@@ -24,7 +24,7 @@ router.get('/admin-projects', async (req, res) => {
   try {
     const { rows } = await pool.query('SELECT * FROM projects');
     const notification = req.query.notification;
-    const currentPage = req.query.page || 1; // Get the current page from the query parameters
+    const currentPage = req.query.page || 1; 
     res.render('admin-projects', { projects: rows, notification, currentPage });
   } catch (error) {
     console.error('Error executing query', error);
@@ -71,7 +71,7 @@ router.post('/updateProject/:id', async (req, res) => {
   }
 });
 
-// Move this part outside of the router
+
 router.post('/deleteProject/:id', async (req, res) => {
   const projectId = req.params.id;
 

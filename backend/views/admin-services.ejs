@@ -33,8 +33,6 @@
       height: auto;
       overflow: hidden;
     }
-
-    /* Custom class for maroon background */
     .bg-maroon {
       background-image: linear-gradient(to bottom, #d93c3c, #6e0a0a);
     }
@@ -74,7 +72,7 @@
                 <%= service.details %>
               </p>
 
-              <!-- Button to trigger the modal -->
+             
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editServiceModal-<%= service.id %>">
                 Edit Service
               </button>
@@ -93,7 +91,7 @@
                     </div>
                     <div class="modal-body">
                       <form action="/updateService/<%= service.id %>" method="post">
-                        <!-- Form fields go here, same as in your original code -->
+                       
                         <div class="form-group">
                           <label for="newTitle-<%= service.id %>">New Title:</label>
                           <input type="text" class="form-control" id="newTitle-<%= service.id %>" name="newTitle">
@@ -113,7 +111,7 @@
                         <button type="submit" class="btn btn-danger">Delete Service</button>
                       </form>
                     </div>
-                    <div class="modal-footer"> <!-- Modal footer for close button -->
+                    <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
