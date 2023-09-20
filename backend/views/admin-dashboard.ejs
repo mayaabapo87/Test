@@ -10,7 +10,7 @@
 
 <body>
     <header class="bg-maroon text-white text-center p-4">
-        <h1 class="font-weight-bold" >APOLLO ADMIN DASHBOARD</h1>
+        <h1 class="font-weight-bold">APOLLO ADMIN DASHBOARD</h1>
     </header>
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e9ecef; border: 1px solid;">
@@ -21,7 +21,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav" style="text-align: center;">
-                <ul class="navbar-nav mx-auto"> <!-- Use "mx-auto" to center align the buttons -->
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0);" onclick="loadServices()">
                             <i class="fas fa-cogs mr-2"></i>Manage Services
@@ -36,19 +36,15 @@
             </div>
         </div>
     </nav>
-    
+
 
 
 
     <div id="content">
-        <!-- Content loaded dynamically here (initially Manage Services) -->
         <script>
-            // Load the Manage Services content by default
             loadServices();
-
             function loadServices() {
-                // Load the content for Manage Services section dynamically
-                fetch('/admin-services') // Replace with the actual URL for loading admin-services content
+                fetch('/admin-services')
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById('content').innerHTML = data;
@@ -56,8 +52,7 @@
             }
 
             function loadProjects() {
-                // Load the content for Manage Projects section dynamically
-                fetch('/admin-projects') // Replace with the actual URL for loading admin-projects content
+                fetch('/admin-projects')
                     .then(response => response.text())
                     .then(data => {
                         document.getElementById('content').innerHTML = data;
@@ -67,7 +62,6 @@
     </div>
 
     <footer class="bg-dark text-white text-center p-3">
-        <!-- Footer content can go here -->
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
