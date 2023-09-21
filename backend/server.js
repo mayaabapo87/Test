@@ -18,11 +18,12 @@ const servicesRoutes = require('./services');
 app.use('/', projectsRoutes);
 app.use('/', servicesRoutes);
 
-// Define a route for the admin dashboard
 app.get('/admin', (req, res) => {
-  // Render the admin dashboard EJS template
-  res.render('admin-dashboard');
+  const notification = req.query.notification;
+  res.render('admin-dashboard', { notification });
+  
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

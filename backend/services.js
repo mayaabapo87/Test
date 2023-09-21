@@ -40,7 +40,7 @@ router.post('/addService', async (req, res) => {
       'INSERT INTO services (title, image, details) VALUES ($1, $2, $3)',
       [title, image, details]
     );
-    res.redirect('/admin-services?notification=Service added successfully');
+    res.redirect('/admin?notification=Service added successfully');
   } catch (error) {
     console.error('Error adding service', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -63,7 +63,7 @@ router.post('/updateService/:id', async (req, res) => {
       [updatedTitle, updatedImage, updatedDetails, serviceId]
     );
 
-    res.redirect('/admin-services?notification=Service updated successfully');
+    res.redirect('/admin?notification=Service updated successfully');
   } catch (error) {
     console.error('Error updating service', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -75,7 +75,7 @@ router.post('/deleteService/:id', async (req, res) => {
 
   try {
     await pool.query('DELETE FROM services WHERE id = $1', [serviceId]);
-    res.redirect('/admin-services?notification=Service deleted successfully');
+    res.redirect('/admin?notification=Service deleted successfully');
   } catch (error) {
     console.error('Error deleting service', error);
     res.status(500).json({ error: 'Internal server error' });

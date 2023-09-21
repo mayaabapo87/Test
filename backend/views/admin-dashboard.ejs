@@ -2,71 +2,103 @@
 <html>
 
 <head>
-    <title>Admin Dashboard</title>
+    <title>Apollo Admin Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar-nav .nav-item .nav-link.btn.btn-outline-custom {
+            background-color: transparent;
+            color: black;
+            border-color: maroon;
+            font-weight: bold;
+        }
 
+        .navbar-nav .nav-item .nav-link.btn.btn-outline-custom:hover {
+            background-color: maroon;
+            color: white;
+        }
 
+        .navbar-nav .nav-item .nav-link.btn.btn-outline-custom:focus,
+        .navbar-nav .nav-item .nav-link.btn.btn-outline-custom:active {
+            box-shadow: none;
+        }
+
+        .navbar-nav .nav-item .nav-link.btn.btn-outline-custom:focus,
+        .navbar-nav .nav-item .nav-link.btn.btn-outline-custom:active {
+            background-color: maroon;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="bg-maroon text-white text-center p-4">
+    <header id="dashboard" class="bg-maroon text-white text-center p-4">
         <h1 class="font-weight-bold">APOLLO ADMIN DASHBOARD</h1>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e9ecef; border: 1px solid;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e9ecef;">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-                style="font-size: 24px; padding: 10px;">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav" style="text-align: center;">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);" onclick="loadServices()">
-                            <i class="fas fa-cogs mr-2"></i>Manage Services
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);" onclick="loadProjects()">
-                            <i class="fas fa-tasks mr-2"></i>Manage Projects
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-custom d-flex align-items-center" href="javascript:void(0);" onclick="loadServices()" style="border-radius: 10px; padding: 10px; margin: 5px; font-size: 18px;">
+                        <i class="fas fa-cogs mr-2"></i>Manage Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-custom d-flex align-items-center" href="javascript:void(0);" onclick="loadProjects()" style="border-radius: 10px; padding: 10px; margin: 5px; font-size: 18px;">
+                        <i class="fas fa-tasks mr-2"></i>Manage Projects
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
+    
+    
 
-
-
-
-    <div id="content">
-        <script>
-            loadServices();
-            function loadServices() {
-                fetch('/admin-services')
-                    .then(response => response.text())
-                    .then(data => {
-                        document.getElementById('content').innerHTML = data;
-                    });
-            }
-
-            function loadProjects() {
-                fetch('/admin-projects')
-                    .then(response => response.text())
-                    .then(data => {
-                        document.getElementById('content').innerHTML = data;
-                    });
-            }
-        </script>
+    <div class="container mt-4">
+        <% if (notification) { %>
+        <div class="alert alert-success">
+            <%= notification %>
+        </div>
+        <% } %>
     </div>
 
-    <footer class="bg-dark text-white text-center p-3">
-    </footer>
+    <div id="content"></div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>   
+        window.onload = function () {
+            const notificationElement = document.querySelector('.alert'); 
+            if (notificationElement) {  
+                setTimeout(function () {
+                    notificationElement.remove();
+                }, 60000); 
+            }
+        };
+    </script>
+
+    <script>
+        loadServices();
+
+        function loadServices() {
+            fetch('/admin-services')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                });
+        }
+
+        function loadProjects() {
+
+            fetch('/admin-projects')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                });
+        }
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
