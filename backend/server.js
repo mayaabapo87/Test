@@ -12,11 +12,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-const projectsRoutes = require('./projects');
-const servicesRoutes = require('./services');
+const projectsRoutes = require('./routes/projects');
+const servicesRoutes = require('./routes/services');
+
 
 app.use('/', projectsRoutes);
 app.use('/', servicesRoutes);
+
 
 app.get('/admin', (req, res) => {
   const notification = req.query.notification;

@@ -1,44 +1,15 @@
 {
-    "title": "ABOUT US",
-    
-    "p1":  "Apollo Technologies is an Information and Communication Technology Services organization that leads a group of companies engaged in the delivery of:",
-
-    "section1": [
-      {
-        "description": "Software Services",
-        "image": "placeholder"
-
-      },
-      {
-        "description": "IT and Network Infrastructure and Services",
-        "image": "placeholder"
-       
-      }
-    ],
-   
-    "p2":  "Apollo Technologies Inc. develops and operates innovative and mission-critical systems in various sectors, mainly in:",
-      
-    "section2": [
-
-        {
-          "description": "Supply Chain Management",
-          "image": "placeholder"
-        
-        },
-        {
-          "description": "Fintech in Banks and non-Bank environments",
-          "image": "placeholder"
-        
-        },
-        {
-          "description": "e-Government Systems",
-          "image": "placeholder"
-         
-        },
-        {
-          "description": "eInformation Technology Infrastructure",
-          "image": "placeholder"
-        }
-      ]
-  }
-  
+  "title": "ABOUT US",
+  "p1": "Apollo Technologies is an Information and Communication Technology Services organization that leads a group of companies engaged in the delivery of:",
+  "list1": [
+    "Software Services",
+    "IT and Network Infrastructure and Services"
+  ],
+  "p2": "Apollo Technologies Inc. develops and operates innovative and mission-critical systems in various sectors, mainly in:",
+  "list2": [
+    "Supply Chain Management",
+    "Fintech in Banks and non-Bank environments",
+    "e-Government Systems",
+    "eInformation Technology Infrastructure"
+  ]
+}

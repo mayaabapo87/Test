@@ -1,46 +1,19 @@
 {
     "title": "OUR PURPOSE",
     "vision": "We empower change in the emerging market through innovative Information and Communication Technology solutions.",
+  
     "mission": [
-      {
-        "description": "We deliver high-quality cost-effective ICT-enabled solutions designed for emerging markets through the use of open standards",
-        "image": "placeholder"
+        "We deliver high-quality cost-effective ICT-enabled solutions designed for emerging markets through the use of open standards",
+        "We nurture creative and passionate individuals and teams ready to build disruptive technologies",
+        "We build partnerships among kindred spirits to enable us to accelerate time to market",
+        "We conduct ourselves in the highest ethical standards"
 
-      },
-      {
-        "description": "We nurture creative and passionate individuals and teams ready to build disruptive technologies",
-        "image": "placeholder"
-       
-      },
-      {
-        "description": "We build partnerships among kindred spirits to enable us to accelerate time to market",
-        "image": "placeholder"
-       
-      },
-      {
-        "description": "We conduct ourselves in the highest ethical standards",
-        "image": "placeholder"
-       
-      }
-    ],
-      
-    "values": [
-
-        {
-          "description": "Integrity - We believe in doing the right thing, in all circumstances, even if no one is watching us.",
-          "image": "placeholder"
-        
-        },
-        {
-          "description": "Competence - We can only contribute something if we are knowledgeable in what is expected of us. We act professionally at all times so we can add value to our team and our clients.",
-          "image": "placeholder"
-        
-        },
-        {
-          "description": "Teamwork - We are accountable to all our other stakeholders. We can only build something significant if we are able to work together as a team, nurture each other, and be accountable to each other.",
-          "image": "placeholder"
-         
-        }
+      ],
+  
+      "values": [
+        "Integrity - We believe in doing the right thing, in all circumstances, even if no one is watching us.",
+        "Competence - We can only contribute something if we are knowledgeable in what is expected of us. We act professionally at all times so we can add value to our team and our clients.",
+        "Teamwork - We are accountable to all our other stakeholders. We can only build something significant if we are able to work together as a team, nurture each other, and be accountable to each other."
       ]
   }
   

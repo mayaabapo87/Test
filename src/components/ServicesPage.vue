@@ -4,7 +4,7 @@
       <h1 class="text-center text-white fw-bold mt-4">OUR SERVICES</h1>
       <hr class="border-secondary border-2 border-dark">
       <div class="row mt-5">
-        <div class="col-md-6" v-for="(service, index) in servicesData" :key="index">
+        <div class="col-md-6 d-flex" v-for="(service, index) in servicesData" :key="index">
           <div class="service-item-wrapper mb-4">
             <div class="service-item bg-white rounded p-4">
               <div class="text-center">

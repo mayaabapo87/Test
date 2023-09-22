@@ -4,6 +4,8 @@
 <head>
   <title>Admin Panel</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
@@ -65,7 +67,7 @@
               <p class="card-text"><strong>Image:</strong>
                 <%= service.image %>
               </p>
-              <p class="card-text"><strong>Details:</strong>
+              <p class="card-text"  style="text-align: justify;"><strong>Details:</strong>
                 <%= service.details %>
               </p>
 
@@ -94,7 +96,7 @@
                           <input type="text" class="form-control" id="newTitle-<%= service.id %>" name="newTitle">
                         </div>
                         <div class="form-group">
-                          <label for="newImage">New Image URL:</label>
+                          <label for="newImage">New Image Filename:</label>
                           <input type="text" class="form-control" id="newImage" name="newImage">
                         </div>
                         <div class="form-group">
@@ -131,8 +133,8 @@
             <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
           </div>
           <div class="form-group">
-            <label for="image">Image URL:</label>
-            <input type="text" class="form-control" id="image" name="image" placeholder="Image URL" required>
+            <label for="image">Image Filename:</label>
+            <input type="text" class="form-control" id="image" name="image" placeholder="Image Filename" required>
           </div>
           <div class="form-group">
             <label for="details">Details:</label>

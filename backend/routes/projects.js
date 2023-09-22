@@ -1,14 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
 const router = express.Router();
-
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'apollo',
-  password: 'qwerty12731.',
-  port: 5432,
-});
+const pool = require('../db');
 
 router.get('/projects', async (req, res) => {
   try {
@@ -24,8 +17,7 @@ router.get('/admin-projects', async (req, res) => {
   try {
     const { rows } = await pool.query('SELECT * FROM projects');
     const notification = req.query.notification;
-    const currentPage = req.query.page || 1; 
-    res.render('admin-projects', { projects: rows, notification, currentPage });
+    res.render('admin-projects', { projects: rows, notification });
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -40,7 +32,7 @@ router.post('/addProject', async (req, res) => {
       'INSERT INTO projects (title, image, shortdescription, details) VALUES ($1, $2, $3, $4)',
       [title, image, shortdescription, details]
     );
-    res.redirect('/admin-projects?notification=Project added successfully');
+    res.redirect('/admin?notification=Project added successfully');
   } catch (error) {
     console.error('Error adding project', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -64,7 +56,7 @@ router.post('/updateProject/:id', async (req, res) => {
       [updatedTitle, updatedImage, updatedShortDescription, updatedDetails, projectId]
     );
 
-    res.redirect('/admin-projects?notification=Project updated successfully');
+    res.redirect('/admin?notification=Project updated successfully');
   } catch (error) {
     console.error('Error updating project', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -77,7 +69,7 @@ router.post('/deleteProject/:id', async (req, res) => {
 
   try {
     await pool.query('DELETE FROM projects WHERE id = $1', [projectId]);
-    res.redirect('/admin-projects?notification=Project deleted successfully');
+    res.redirect('/admin?notification=Project deleted successfully');
   } catch (error) {
     console.error('Error deleting project', error);
     res.status(500).json({ error: 'Internal server error' });
