@@ -5,7 +5,7 @@ const pool = require('../db');
 const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
 
-// Create a DOM window for DOMPurify
+
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 

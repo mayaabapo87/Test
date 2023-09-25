@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <style>
-        /* Simplify and improve the button styles */
+      
         .navbar-nav .nav-item .nav-link.btn.btn-outline-custom {
             background-color: transparent;
             color: black;
@@ -46,10 +46,9 @@
         </div>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e9ecef;">
-        <div class="container">
-            <!-- Center the buttons on all screen sizes -->
-            <ul class="navbar-nav mx-auto">
+    <nav class="navbar navbar-expand-lg navbar-light d-flex" style="background-color: #e9ecef;">
+        <div class="container d-flex">
+            <ul class="navbar-nav mx-auto d-flex ">
                 <li class="nav-item">
                     <a id="services-link" class="nav-link btn btn-outline-custom d-flex align-items-center" href="#">
                         <i class="fas fa-cogs mr-2"></i>Manage Services
@@ -61,7 +60,7 @@
                     </a>
                 </li>
             </ul>
-        </div>k
+        </div>
     </nav>
 
     <div class="container mt-4">
@@ -83,7 +82,6 @@
     <div id="content"></div>
 
     <script>
-        // Define a function to load the content based on the URL
         function loadContentFromURL() {
             const currentURL = window.location.pathname;
             if (currentURL === '/manage-services') {
@@ -93,10 +91,8 @@
             }
         }
 
-        // Call the function on page load
         loadContentFromURL();
 
-        // Add event listeners to handle navigation
         document.getElementById('services-link').addEventListener('click', function (e) {
             e.preventDefault();
             window.history.pushState({}, '', '/manage-services');

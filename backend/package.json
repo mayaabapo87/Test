@@ -8,6 +8,9 @@
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
     "jsdom": "^22.1.0",
-    "sanitize-html": "^2.11.0"
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "sanitize-html": "^2.11.0",
+    "sequelize": "^6.33.0"
   }
 }
