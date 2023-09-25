@@ -1,5 +1,5 @@
 <template>
-  <section id="projects-view" class=" py-5" style="background-color: #ccc;">
+  <section id="projects-view" class=" py-5"  style="background-color: #f6f4f3;">
   <div class="container mt-5">
     <h1 class="text-center text-dark fw-bold mt-4">OUR PROJECTS</h1>
     <hr class="border-secondary border-2 border-dark">
@@ -9,7 +9,7 @@
           <div id="carouselProjects" class="carousel my-auto carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner my-2">
               <div v-for="(set, index) in projectsData" :key="index" :class="['carousel-item', { active: index === 0 }]">
-                <!--Desktop Partners-->
+                <!--Desktop Project-->
                 <div class="d-none d-xl-block">
                   <div class="d-flex justify-content-center">
                     <div class="card border-1  w-75" style="height:350px">
@@ -19,8 +19,9 @@
                             :src="require(`@/assets/projects/${set.image}.png`)" class="card-img-top" alt="..." />
                         </div>
                         <div class="text-center">
-                          <h2 class="text-maroon">{{ set.title }}</h2>
-                          <p class="text-dark" style="font-size: 1.1rem;">{{ set.shortdescription }}</p>
+                          <h2 class="text-maroon" v-html="set.title"></h2>
+                          
+                          <p class="text-dark" style="font-size: 1.1rem;"  v-html="set.shortdescription"></p>
                         </div>
                         <button type="button" class="button-more btn-outline-maroon" data-bs-toggle="modal"
                           :data-bs-target="'#projectDetails' + index">
@@ -32,15 +33,15 @@
                   </div>
                 </div>
 
-                <!--Tablet Partners-->
+                <!--Tablet Project-->
                 <div class="d-none d-sm-block d-xl-none d-xxl-none h-100 w-100  justify-content-center">
                   <div class="card h-100 w-75 mx-auto">
                     <div class="card-body">
                       <img :src="require(`@/assets/projects/${set.image}.png`)" class="card-img-top tablet-image img-fluid" alt="..." />
                       <div class="text-center">
-                        <h2 class="text-maroon">{{ set.title }}</h2>
+                        <h2 class="text-maroon" v-html="set.title"></h2>
                         <div class="container">
-                          <p class="text-dark ">{{ set.shortdescription }}</p>
+                          <p class="text-dark "  v-html="set.shortdescription"></p>
                         </div>
                         <button type="button" class="button-more btn-outline-maroon" data-bs-toggle="modal"
                           :data-bs-target="'#projectDetails' + index">
@@ -51,7 +52,7 @@
                   </div>
                 </div>
                 
-                <!--Phone Partners-->
+                <!--Phone Project-->
                 <div class="d-block d-sm-none ">
                   <div class="d-flex justify-content-center align-items-center">
                     <div class="card border-0" >
@@ -59,8 +60,8 @@
                         <img :src="require(`@/assets/projects/${set.image}.png`)"
                           class="card-img-top phone-image img-fluid"  alt="..." />
                         <div class="text-center">
-                          <h2 class="text-maroon ">{{ set.title }}</h2>
-                          <p class="text-dark ">{{ set.shortdescription }}</p>
+                          <h2 class="text-maroon "  v-html="set.title"></h2>
+                          <p class="text-dark "  v-html="set.shortdescription"></p>
                         </div>
                         <button type="button" class="button-more btn-outline-maroon" data-bs-toggle="modal"
                           :data-bs-target="'#projectDetails' + index">
@@ -101,7 +102,7 @@
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="projectDetailsModalLabel">{{ set.title }}</h5>
+          <h5 class="modal-title" id="projectDetailsModalLabel"  v-html="set.title"></h5>
           <button type="button" class="close " data-bs-dismiss="modal" aria-label="Close" >
           </button>
         </div>
@@ -130,7 +131,6 @@ export default {
     };
   },
   created() {
-    
     this.fetchProjectsData();
   },
   methods: {
@@ -141,7 +141,7 @@ export default {
           throw new Error('Network response was not ok');
         }
         this.projectsData = await response.json();
-        console.log(this.projectsData); // Log the fetched data
+        console.log(this.projectsData); 
       } catch (error) {
         console.error('Error fetching project data', error);
       }

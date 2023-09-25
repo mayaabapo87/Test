@@ -1,6 +1,6 @@
 <template>
   <!-- FOOTERS AS OF NOW-->
-  <footer class="bg-maroon text-white mt-5">
+  <footer class="bg-maroon text-white">
     <div class="container py-4">
       <div class="row align-items-center">
         <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">

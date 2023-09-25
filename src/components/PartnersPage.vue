@@ -1,5 +1,7 @@
 <template>
-    <section id="partners-view" class="py-5" style="background-color: #e9ecef;">
+
+        <section id="partners-view" class=" py-5"  style="background-color: #e9ecef;">
+  
     <div class="container mt-5">
         <h1 class="text-center text-dark fw-bold ">OUR PARTNERS</h1>
         <hr class="border-secondary border-2 border-dark">
@@ -141,7 +143,7 @@
         </div>
         <hr class="border-secondary border-2 border-dark">
     </div>    
-    </section>
+</section>
 </template>
 
 <script>

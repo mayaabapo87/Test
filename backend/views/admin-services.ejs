@@ -47,12 +47,17 @@
 <body>
   <div class="container">
 
-    <% if (notification) { %>
-      <div class="alert alert-success mt-4">
-        <%= notification %>
+    <div class="container mt-4">
+      <% if (notification) { %>
+      <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          <%= notification %>
       </div>
-    <% } %>
-
+      <% } %>
+  </div>
+  
     <div class="row">
       <% services.forEach((service) => { %>
         <div class="col-md-6">
@@ -90,20 +95,18 @@
                     </div>
                     <div class="modal-body">
                       <form action="/updateService/<%= service.id %>" method="post">
-                       
                         <div class="form-group">
                           <label for="newTitle-<%= service.id %>">New Title:</label>
-                          <input type="text" class="form-control" id="newTitle-<%= service.id %>" name="newTitle">
+                          <input type="text" class="form-control" id="newTitle-<%= service.id %>" name="newTitle" value="<%= service.title %>">
                         </div>
                         <div class="form-group">
                           <label for="newImage">New Image Filename:</label>
-                          <input type="text" class="form-control" id="newImage" name="newImage">
+                          <input type="text" class="form-control" id="newImage" name="newImage" value="<%= service.image %>">
                         </div>
                         <div class="form-group">
                           <label for="newDetails">New Details:</label>
-                          <textarea class="form-control" id="newDetails" name="newDetails" rows="4"></textarea>
+                          <textarea class="form-control" id="newDetails" name="newDetails" rows="4"><%= service.details %></textarea>
                         </div>
-                        
                         <button type="submit" class="btn btn-secondary">Update Service</button>
                       </form>
                       <form action="/deleteService/<%= service.id %>" method="post" class="mt-3">

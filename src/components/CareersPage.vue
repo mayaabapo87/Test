@@ -1,5 +1,5 @@
 <template>
-    <br  id="careers-view">  
+    <br id="careers-view">
     <div class="container my-1">
         <h1 class="text-center text-dark fw-bold mt-5">CAREERS</h1>
         <hr class="border-secondary border-2 border-dark">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=" text-center mt-3">
+                <div class=" text-center mt-3" >
                     <button class="btn btn-outline-maroon " data-bs-target="#career-list" data-bs-toggle="modal">View All</button>
                 </div>
 
@@ -47,6 +47,7 @@
         </div>
         <hr class="border-secondary border-2 border-dark">
     </div>
+
 </template>
 
 <script>

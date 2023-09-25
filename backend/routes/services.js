@@ -2,6 +2,12 @@ const express = require('express');
 const { Pool } = require('pg');
 const router = express.Router();
 const pool = require('../db');
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+
+// Create a DOM window for DOMPurify
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
 
 router.get('/services', async (req, res) => {
   try {
@@ -28,11 +34,14 @@ router.post('/addService', async (req, res) => {
   const { title, image, details } = req.body;
 
   try {
+    const sanitizedTitle = DOMPurify.sanitize(title);
+    const sanitizedDetails = DOMPurify.sanitize(details);
+
     await pool.query(
       'INSERT INTO services (title, image, details) VALUES ($1, $2, $3)',
-      [title, image, details]
+      [sanitizedTitle, image, sanitizedDetails]
     );
-    res.redirect('/admin?notification=Service added successfully');
+    res.redirect('/manage-services?notification=Service added successfully');
   } catch (error) {
     console.error('Error adding service', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -46,16 +55,16 @@ router.post('/updateService/:id', async (req, res) => {
   try {
     const existingService = await pool.query('SELECT * FROM services WHERE id = $1', [serviceId]);
 
-    const updatedTitle = newTitle || existingService.rows[0].title;
+    const updatedTitle = DOMPurify.sanitize(newTitle || existingService.rows[0].title);
     const updatedImage = newImage || existingService.rows[0].image;
-    const updatedDetails = newDetails || existingService.rows[0].details;
+    const updatedDetails = DOMPurify.sanitize(newDetails || existingService.rows[0].details);
 
     await pool.query(
       'UPDATE services SET title = $1, image = $2, details = $3 WHERE id = $4',
       [updatedTitle, updatedImage, updatedDetails, serviceId]
     );
 
-    res.redirect('/admin?notification=Service updated successfully');
+    res.redirect('/manage-services?notification=Service updated successfully');
   } catch (error) {
     console.error('Error updating service', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -67,7 +76,7 @@ router.post('/deleteService/:id', async (req, res) => {
 
   try {
     await pool.query('DELETE FROM services WHERE id = $1', [serviceId]);
-    res.redirect('/admin?notification=Service deleted successfully');
+    res.redirect('/manage-services?notification=Service deleted successfully');
   } catch (error) {
     console.error('Error deleting service', error);
     res.status(500).json({ error: 'Internal server error' });

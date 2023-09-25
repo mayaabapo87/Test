@@ -22,8 +22,8 @@
                               <div class="card-body">
                                   <div class="container text-center">
                                     <img :src="require(`@/assets/projects/${set.image}.png`)" class="card-img-top custom-image" alt="..." />
-                                      <h5 class="card-title text-maroon">{{ set.title }}</h5>
-                                      <p class="fs-6 text-dark">{{ set.shortdescription }}</p>
+                                      <h5 class="card-title text-maroon"  v-html="set.title"></h5>
+                                      <p class="fs-6 text-dark"  v-html="set.shortdescription"></p>
                                   </div>
                               </div>
                               <button type="button" class="button-more btn-outline-maroon" data-bs-toggle="modal"

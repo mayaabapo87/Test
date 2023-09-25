@@ -44,13 +44,16 @@
 
 
 <body>
+  
   <div id="projects" class="container" >
 
-    <% if (notification) { %>
-      <div class="alert alert-success mt-4">
-        <%= notification %>
+    <div class="container mt-4">
+      <% if (notification) { %>
+      <div class="alert alert-success">
+          <%= notification %>
       </div>
-    <% } %>
+      <% } %>
+  </div>
 
     <div class="row">
       <% projects.forEach((project) => { %>
@@ -94,19 +97,19 @@
                       
                         <div class="form-group">
                           <label for="newTitle-<%= project.id %>">New Title:</label>
-                          <input type="text" class="form-control" id="newTitle-<%= project.id %>" name="newTitle">
+                          <input type="text" class="form-control" id="newTitle-<%= project.id %>" name="newTitle" value="<%= project.title %>">
                         </div>
                         <div class="form-group">
                           <label for="newImage">New Image Filename:</label>
-                          <input type="text" class="form-control" id="newImage" name="newImage">
+                          <input type="text" class="form-control" id="newImage" name="newImage" value="<%= project.image %>">
                         </div>
                         <div class="form-group">
                           <label for="newShortDescription">New Short Description:</label>
-                          <textarea class="form-control" id="newShortDescription" name="newShortDescription" rows="4"></textarea>
+                          <textarea class="form-control" id="newShortDescription" name="newShortDescription" rows="4"><%= project.shortdescription %></textarea>
                         </div>
                         <div class="form-group">
                           <label for="newDetails">New Details:</label>
-                          <textarea class="form-control" id="newDetails" name="newDetails" rows="4"></textarea>
+                          <textarea class="form-control" id="newDetails" name="newDetails"rows="4"><%= project.details %></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-secondary">Update Project</button>
@@ -153,8 +156,6 @@
       </form>
     </div>
   </div>
-  
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

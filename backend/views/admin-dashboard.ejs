@@ -3,9 +3,9 @@
 
 <head>
     <title>Apollo Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Added viewport meta tag for better responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
+
     <style>
         /* Simplify and improve the button styles */
         .navbar-nav .nav-item .nav-link.btn.btn-outline-custom {
@@ -38,54 +38,76 @@
 </head>
 
 <body>
+
     <header id="dashboard" class="bg-maroon text-white text-center py-4">
         <div class="container">
-            <h2 class="font-weight-bold display-5 ">APOLLO</h2>
+            <h2 class="font-weight-bold display-5">APOLLO</h2>
             <h3 class="font-weight-bold display-6">ADMIN DASHBOARD</h3>
         </div>
     </header>
-    
+
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e9ecef;">
         <div class="container">
             <!-- Center the buttons on all screen sizes -->
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-custom d-flex align-items-center" href="javascript:void(0);" onclick="loadServices()">
+                    <a id="services-link" class="nav-link btn btn-outline-custom d-flex align-items-center" href="#">
                         <i class="fas fa-cogs mr-2"></i>Manage Services
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-custom d-flex align-items-center" href="javascript:void(0);" onclick="loadProjects()">
+                    <a id="projects-link" class="nav-link btn btn-outline-custom d-flex align-items-center" href="#">
                         <i class="fas fa-tasks mr-2"></i>Manage Projects
                     </a>
                 </li>
             </ul>
-        </div>
+        </div>k
     </nav>
 
     <div class="container mt-4">
         <% if (notification) { %>
-        <div class="alert alert-success">
-            <%= notification %>
+        <div id="notification" class="alert alert-success">
+            <span><%= notification %></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
+        <script>
+
+            setTimeout(function () {
+                document.getElementById('notification').style.display = 'none';
+            }, 30000);
+        </script>
         <% } %>
     </div>
-
     <div id="content"></div>
 
-    <script>   
-        window.onload = function () {
-            const notificationElement = document.querySelector('.alert'); 
-            if (notificationElement) {  
-                setTimeout(function () {
-                    notificationElement.remove();
-                }, 60000); 
-            }
-        };
-    </script>
-
     <script>
-        loadServices();
+        // Define a function to load the content based on the URL
+        function loadContentFromURL() {
+            const currentURL = window.location.pathname;
+            if (currentURL === '/manage-services') {
+                loadServices();
+            } else if (currentURL === '/manage-projects') {
+                loadProjects();
+            }
+        }
+
+        // Call the function on page load
+        loadContentFromURL();
+
+        // Add event listeners to handle navigation
+        document.getElementById('services-link').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.history.pushState({}, '', '/manage-services');
+            loadServices();
+        });
+
+        document.getElementById('projects-link').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.history.pushState({}, '', '/manage-projects');
+            loadProjects();
+        });
 
         function loadServices() {
             fetch('/admin-services')
@@ -96,7 +118,6 @@
         }
 
         function loadProjects() {
-
             fetch('/admin-projects')
                 .then(response => response.text())
                 .then(data => {
