@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Service = require('../models/servicesModel');
 
-
+// route to get all services
 router.get('/services', async (req, res) => {
   try {
     const services = await Service.findAll();

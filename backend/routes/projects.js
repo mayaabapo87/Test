@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../models/projectsModel');
 
+// route to get all projects
 router.get('/projects', async (req, res) => {
   try {
     const projects = await Project.findAll();
@@ -39,7 +40,7 @@ router.post('/addProject', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
+// POST to update a project
 router.post('/updateProject/:id', async (req, res) => {
   const projectId = req.params.id;
   const { newTitle, newImage, newShortDescription, newDetails } = req.body;
@@ -58,14 +59,14 @@ router.post('/updateProject/:id', async (req, res) => {
 
     await projectsToUpdate.save();
 
-    res.redirect('/manage-projects?notification=Service updated successfully');
+    res.redirect('/manage-projects?notification=Project updated successfully');
   } catch (error) {
     console.error('Error updating service', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-
+// POST to delete a project
 router.post('/deleteProject/:id', async (req, res) => {
   const projectId = req.params.id;
 
