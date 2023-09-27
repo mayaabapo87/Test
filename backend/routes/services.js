@@ -1,46 +1,36 @@
 const express = require('express');
-const { Pool } = require('pg');
 const router = express.Router();
-const pool = require('../db');
-const createDOMPurify = require('dompurify');
-const { JSDOM } = require('jsdom');
+const Service = require('../models/servicesModel');
 
-// Create a DOM window for DOMPurify
-const window = new JSDOM('').window;
-const DOMPurify = createDOMPurify(window);
 
 router.get('/services', async (req, res) => {
   try {
-    const { rows } = await pool.query('SELECT * FROM services');
-    res.json(rows);
+    const services = await Service.findAll();
+    res.json(services);
   } catch (error) {
-    console.error('Error executing query', error);
+    console.error('Error fetching services:', error.message); 
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
+// GET services for admin view
 router.get('/admin-services', async (req, res) => {
   try {
-    const { rows } = await pool.query('SELECT * FROM services');
+    const services = await Service.findAll();
     const notification = req.query.notification;
-    res.render('admin-services', { services: rows, notification });
+    res.render('admin-services', { services, notification });
   } catch (error) {
-    console.error('Error executing query', error);
+    console.error('Error fetching services', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
+// POST to add a new service
 router.post('/addService', async (req, res) => {
   const { title, image, details } = req.body;
 
   try {
-    const sanitizedTitle = DOMPurify.sanitize(title);
-    const sanitizedDetails = DOMPurify.sanitize(details);
-
-    await pool.query(
-      'INSERT INTO services (title, image, details) VALUES ($1, $2, $3)',
-      [sanitizedTitle, image, sanitizedDetails]
-    );
+    const newService = await Service.create({ title, image, details });
     res.redirect('/manage-services?notification=Service added successfully');
   } catch (error) {
     console.error('Error adding service', error);
@@ -48,21 +38,24 @@ router.post('/addService', async (req, res) => {
   }
 });
 
+
+// POST to update a service
 router.post('/updateService/:id', async (req, res) => {
   const serviceId = req.params.id;
   const { newTitle, newImage, newDetails } = req.body;
 
   try {
-    const existingService = await pool.query('SELECT * FROM services WHERE id = $1', [serviceId]);
+    const serviceToUpdate = await Service.findByPk(serviceId);
 
-    const updatedTitle = DOMPurify.sanitize(newTitle || existingService.rows[0].title);
-    const updatedImage = newImage || existingService.rows[0].image;
-    const updatedDetails = DOMPurify.sanitize(newDetails || existingService.rows[0].details);
+    if (!serviceToUpdate) {
+      return res.status(404).json({ error: 'Service not found' });
+    }
 
-    await pool.query(
-      'UPDATE services SET title = $1, image = $2, details = $3 WHERE id = $4',
-      [updatedTitle, updatedImage, updatedDetails, serviceId]
-    );
+    serviceToUpdate.title = newTitle;
+    serviceToUpdate.image = newImage;
+    serviceToUpdate.details = newDetails;
+
+    await serviceToUpdate.save();
 
     res.redirect('/manage-services?notification=Service updated successfully');
   } catch (error) {
@@ -71,16 +64,22 @@ router.post('/updateService/:id', async (req, res) => {
   }
 });
 
+// POST to delete a service
 router.post('/deleteService/:id', async (req, res) => {
   const serviceId = req.params.id;
 
   try {
-    await pool.query('DELETE FROM services WHERE id = $1', [serviceId]);
+    const serviceToDelete = await Service.findByPk(serviceId);
+
+    if (!serviceToDelete) {
+      return res.status(404).json({ error: 'Service not found' });
+    }
+
+    await serviceToDelete.destroy();
     res.redirect('/manage-services?notification=Service deleted successfully');
   } catch (error) {
     console.error('Error deleting service', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 module.exports = router;

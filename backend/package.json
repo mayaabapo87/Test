@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "dompurify": "^3.0.5",
     "ejs": "^3.1.9",
@@ -10,7 +9,6 @@
     "jsdom": "^22.1.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
-    "sanitize-html": "^2.11.0",
-    "sequelize": "^6.33.0"
+    "sanitize-html": "^2.11.0"
   }
 }
