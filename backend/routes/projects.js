@@ -40,6 +40,7 @@ router.post('/addProject', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 // POST to update a project
 router.post('/updateProject/:id', async (req, res) => {
   const projectId = req.params.id;
