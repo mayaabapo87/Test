@@ -2,11 +2,11 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize({
-  dialect: 'postgres', // Specify the database dialect
+  dialect: 'postgres', 
   host: 'localhost',
   database: 'apollo',
-  username: 'postgres', // Add your username here
-  password: 'qwerty12731.', // Add your password here
+  username: 'postgres', 
+  password: 'qwerty12731.', 
   port: 5432,
 });
 

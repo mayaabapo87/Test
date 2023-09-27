@@ -16,7 +16,7 @@ router.get('/projects', async (req, res) => {
 router.get('/admin-projects', async (req, res) => {
   try {
     const projects = await Project.findAll({
-      order: [['id']], // Order by ID in descending order
+      order: [['id']], 
     });
     const notification = req.query.notification;
     res.render('admin-projects', { projects, notification });

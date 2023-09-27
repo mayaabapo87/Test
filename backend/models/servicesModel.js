@@ -13,7 +13,7 @@ const Service = sequelize.define('services', {
     type: DataTypes.TEXT,
   },
 }, {
-  timestamps: false, // Disable timestamps
+  timestamps: false, 
 });
 
 module.exports = Service;
