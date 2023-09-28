@@ -35,7 +35,7 @@ export default {
   methods: {
     async fetchServicesData() {
       try {
-        const response = await fetch('http://localhost:3000/services');
+        const response = await fetch('/services');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

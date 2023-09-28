@@ -136,7 +136,7 @@ export default {
   methods: {
     async fetchProjectsData() {
       try {
-        const response = await fetch('http://localhost:3000/projects'); 
+        const response = await fetch('/projects'); 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
