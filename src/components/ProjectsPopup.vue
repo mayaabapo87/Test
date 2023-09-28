@@ -8,7 +8,7 @@
                       <label class="visually-hidden" for="searchInput">Search</label>
                       <div class="input-group">
                           <div class="input-group-text">
-                              <img width="30" height="30" src="../../assets/icons/search.svg" alt="...">
+                              <img width="30" height="30" src="@/assets/Icons/search.svg" alt="...">
                           </div>
                           <input v-model="searchQuery" type="text" class="form-control" id="searchInput" placeholder="Search...">
                       </div>

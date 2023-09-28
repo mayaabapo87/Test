@@ -11,7 +11,7 @@
                             <div class="container">
                                 <div class="row justify-content-center allign-items-center">
                                     <div class="col-auto p-0 d-none d-sm-block">
-                                        <img src="@/assets/icons/join.svg" alt="..."/>
+                                        <img src="@/assets/Icons/join.svg" alt="..."/>
                                     </div>
                                     <div class="col px-0">
                                         <div class="card-body allign-text-start px-0">
@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import careerData from "../assets/data/careers.json"
-import CareerDetailsPopup from './popups/CareerDetailsPopup.vue';
+import careerData from "@/assets/data/careers.json"
+import CareerDetailsPopup from './CareerDetailsPopup.vue';
 
 export default {
     components:{

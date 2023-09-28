@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import careerData from "../../assets/data/careers.json"
+import careerData from "@/assets/data/careers.json"
 import { ref } from 'vue'
 
 const careerID = ref(0)

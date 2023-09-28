@@ -24,7 +24,7 @@
                                     <div class="d-flex justify-content-center">
                                         <div class="card border-1  w-75">
                                             <div class="card-body">
-                                                <img width="150" height="150" :src="require(`../assets/logos/${set.icon}.svg`)" class="card-img-top" alt="..."/>
+                                                <img width="150" height="150" :src="require(`@/assets/logos/${set.icon}.svg`)" class="card-img-top" alt="..."/>
                                                 <div class="text-center">
                                                     <h2 class="text-maroon">{{ set.name }}</h2>
                                                     <p class=" text-dark text-truncate">{{ set.description }}</p>
@@ -38,7 +38,7 @@
                                 <div class="d-none d-sm-block d-xl-none d-xxl-none h-100 w-100  justify-content-center">
                                     <div class="card h-100 w-75 mx-auto">
                                         <div class="card-body">
-                                            <img width="150" height="150" :src="require(`../assets/logos/${set.icon}.svg`)" class="card-img-top" alt="..."/>
+                                            <img width="150" height="150" :src="require(`@/assets/logos/${set.icon}.svg`)" class="card-img-top" alt="..."/>
                                             <div class="text-center">
                                                 <h2 class="text-maroon">{{ set.name }}</h2>
                                                 <div class="container">
@@ -147,8 +147,8 @@
 </template>
 
 <script>
-import storiesData from "../assets/data/stories.json"
-import partnerData from "../assets/data/partners.json";
+import storiesData from "@/assets/data/stories.json"
+import partnerData from "@/assets/data/partners.json";
 
 
 export default {

@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="col">
                                     <svg class=" " width="450" height="450" xmlns="http://www.w3.org/2000/svg">
-                                        <image href="@/assets/icons/apollo.svg" x="0" y="0" width="450" height="450" />
+                                        <image href="@/assets/Icons/apollo.svg" x="0" y="0" width="450" height="450" />
                                     </svg>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col">
                                     <svg class=" " width="450" height="450" xmlns="http://www.w3.org/2000/svg">
-                                        <image href="@/assets/icons/email.svg" x="0" y="0" width="450" height="450" />
+                                        <image href="@/assets/Icons/email.svg" x="0" y="0" width="450" height="450" />
                                     </svg>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
 
                                 <div class="col">
                                     <svg class=" " width="450" height="450" xmlns="http://www.w3.org/2000/svg">
-                                        <image href="@/assets/icons/join.svg" x="0" y="0" width="450" height="450" />
+                                        <image href="@/assets/Icons/join.svg" x="0" y="0" width="450" height="450" />
                                     </svg>
                                 </div>
                             </div>

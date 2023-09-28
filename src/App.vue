@@ -32,13 +32,13 @@ import Careers from './components/CareersPage.vue'
 import Location from './components/LocationPage.vue'
 import Footer from './components/FooterPage.vue'
 
-import ContactForm from './components/popups/ContactPopup.vue'
-import CareerDetailsPopup from './components/popups/CareerDetailsPopup.vue';
-import CareerPopup from './components/popups/CareerPopup.vue';
-import ResumePopup from './components/popups/ResumePopup.vue'
-import PartnersPopup from './components/popups/PartnersPopup.vue'
-import ProjectsPopup from './components/popups/ProjectsPopup.vue'
-import StoriesPopup from './components/popups/StoriesPopup.vue'
+import ContactForm from './components/ContactPopup.vue'
+import CareerDetailsPopup from './components/CareerDetailsPopup.vue';
+import CareerPopup from './components/CareerPopup.vue';
+import ResumePopup from './components/ResumePopup.vue'
+import PartnersPopup from './components/PartnersPopup.vue'
+import ProjectsPopup from './components/ProjectsPopup.vue'
+import StoriesPopup from './components/StoriesPopup.vue'
 
 
 

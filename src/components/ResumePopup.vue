@@ -12,28 +12,28 @@
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">
-                                    <img width="40" height="40" src="../../assets/icons/person.svg" class="card-img-top" alt="...">
+                                    <img width="40" height="40" src="@/assets/Icons/person.svg" class="card-img-top" alt="...">
                                 </span>
                                 <input type="text" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">
-                                    <img width="40" height="40" src="../../assets/icons/envelope.svg" class="card-img-top" alt="...">
+                                    <img width="40" height="40" src="@/assets/Icons/envelope.svg" class="card-img-top" alt="...">
                                 </span>
                                 <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">
-                                    <img width="40" height="40" src="../../assets/icons/telephone.svg" class="card-img-top" alt="...">
+                                    <img width="40" height="40" src="@/assets/Icons/telephone.svg" class="card-img-top" alt="...">
                                 </span>
                                 <input type="text" class="form-control" placeholder="09xxxxxxxx" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="container allign-items-center text-center justify-items-center border rounded py-2">
                                 <label for="formFileLg" class="form-label">
-                                    <img width="50" height="50" src="../../assets/icons/upload.svg" class="card-img-top" alt="...">
+                                    <img width="50" height="50" src="@/assets/Icons/upload.svg" class="card-img-top" alt="...">
                                 </label>
                                 <input class="form-control" id="formFileLg" type="file">
                             </div>

@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import storiesData from '../../assets/data/stories.json'
+import storiesData from '@/assets/data/stories.json'
 
 export default{
     data() {
